@@ -1,0 +1,11 @@
+.content-seo-page {
+  @apply text-justify text-sm space-y-3 list-decimal mx-4;
+}
+
+.content-seo-page li {
+  @apply font-semibold text-blue-700 text-base;
+}
+
+.content-seo-page li p {
+  @apply font-normal text-black text-sm;
+}

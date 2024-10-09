@@ -1,0 +1,9 @@
+.div {
+  background: rgb(0, 0, 0);
+  background: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 0) 50%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  @apply h-full w-auto aspect-[3/2] absolute top-0 left-1/2 -translate-x-1/2 max-md:hidden;
+}

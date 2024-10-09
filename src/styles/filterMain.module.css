@@ -1,0 +1,7 @@
+.h2 {
+  @apply relative -translate-y-[2px] font-semibold cursor-pointer transition-all;
+}
+
+.div {
+  @apply absolute -bottom-[2px] left-1/2 -translate-x-1/2 h-0.5 transition-all;
+}
