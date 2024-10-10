@@ -10,9 +10,10 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { createQueryString } from "@/utils/utils";
+import { createQueryString, deleteQueryStringParams } from "@/utils/utils";
+import { cn } from "@/lib/utils";
 
-export function SliderDate() {
+export function SliderDate({ className }: { className?: string }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -35,7 +36,7 @@ export function SliderDate() {
       opts={{
         align: "start",
       }}
-      className="md:w-1/2 w-[80%] mx-12 flex-shrink-0"
+      className={cn("md:w-1/2 w-[80%] mx-12 flex-shrink-0", className)}
     >
       <CarouselContent className="gap-2">
         {daysArray.map((item, i) => (
@@ -43,10 +44,14 @@ export function SliderDate() {
             className="lg:basis-1/5 md:basis-1/4 sm:basis-1/5 basis-1/3"
             key={item.dayOfMonth}
             onClick={() => {
+              const searchParamsFilter = deleteQueryStringParams(
+                ["timeStart"],
+                searchParams
+              );
               const param = createQueryString(
                 "date",
                 item.dayOfMonth,
-                searchParams
+                searchParamsFilter
               );
               router.replace(`${pathname}?${param}`, { scroll: false });
             }}

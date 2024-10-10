@@ -37,7 +37,12 @@ export async function ListMovieAndTheater({
                 <ButtonLink
                   key={shTime.show_time_start}
                   className="px-7 py-2 duration-500 hover:bg-orange-500 hover:text-white"
-                  href={`/booking/${id}?cinemaName=${item.cinema_name}&timeStart=${shTime.show_time_start}`}
+                  href={`/booking?movieId=${id}&date=${format(
+                    date,
+                    "dd/MM"
+                  )}&cityName=${item.city_name}&cinemaName=${
+                    item.cinema_name
+                  }&timeStart=${shTime.show_time_start}`}
                   name={shTime.show_time_start}
                 />
               ))

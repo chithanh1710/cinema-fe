@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { SearchIcon, User } from "lucide-react";
+import { User } from "lucide-react";
 import { ToggleMenu } from "../Menu/ToggleMenu";
 import { SearchToggle } from "../Search/SearchToggle";
 import { Suspense } from "react";

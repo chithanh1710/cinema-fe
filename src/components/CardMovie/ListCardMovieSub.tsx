@@ -1,18 +1,18 @@
-import React from "react";
+import { Movie } from "@/types/RootMovies";
 import { CardMovieSub } from "./CardMovieSub";
 
-export function ListCardMovieSub() {
-  {
-    /* //TODO: Thêm dữ liệu vào đây */
-  }
+export function ListCardMovieSub({ data }: { data: Movie[] }) {
   return (
     <ul className="grid grid-cols-3 gap-6">
-      <CardMovieSub
-        href="/bookTickets/123"
-        starNum={8.9}
-        src="/test.jpg"
-        title="Test"
-      />
+      {data.map((d) => (
+        <CardMovieSub
+          key={d.id}
+          href={`/bookTickets/${d.id}`}
+          starNum={d.star}
+          src={`/${d.thumbnail}`}
+          title={d.name}
+        />
+      ))}
     </ul>
   );
 }

@@ -1,4 +1,4 @@
-import { MovieDetails } from "@/types/DatabaseType";
+import { MovieDetails } from "@/types/RootMovies";
 import { ButtonLink } from "../Button/ButtonLink";
 import { ListInfo } from "./ListInfo";
 
@@ -16,18 +16,18 @@ export function InfoPage({
       </ListInfo>
       <ListInfo title="Thể loại">
         {detail.genres.map((g) => (
-          <ButtonLink key={g.id} href={`genres/${g.id}`} name={g.name} />
+          <ButtonLink key={g.id} href={`/genres/${g.id}`} name={g.name} />
         ))}
       </ListInfo>
       <ListInfo title="Đạo diễn">
         <ButtonLink
-          href={`actors/${detail.director.id}`}
+          href={`/directors/${detail.director.id}`}
           name={detail.director.name}
         />
       </ListInfo>
       <ListInfo title="Diễn viên">
         {detail.actors.map((a) => (
-          <ButtonLink key={a.id} href={`actors/${a.id}`} name={a.name} />
+          <ButtonLink key={a.id} href={`/actors/${a.id}`} name={a.name} />
         ))}
       </ListInfo>
     </div>

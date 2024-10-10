@@ -25,6 +25,7 @@ export interface Movie {
   type: string;
   genres: string[];
   actors: string[];
+  show_times: ShowTime[];
   duration: string;
   trailer: string;
   thumbnail: string;
@@ -55,4 +56,9 @@ export interface MovieDetails {
   image: string;
   show_times: any[];
   release_date: string;
+}
+
+export interface ShowTime {
+  time_start: string;
+  cinemaName: string;
 }

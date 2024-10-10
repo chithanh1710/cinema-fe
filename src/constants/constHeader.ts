@@ -20,31 +20,31 @@ export const about = [
 export const blogs: { title: string; href: string; description: string }[] = [
   {
     title: "Thể Loại Phim",
-    href: "/kind-movie",
+    href: "/genres",
     description:
       "Phân loại các bộ phim theo chủ đề, thể loại, giúp người xem dễ dàng lựa chọn nội dung yêu thích.",
   },
   {
     title: "Diễn Viên",
-    href: "/actor",
+    href: "/actors",
     description:
       "Cung cấp thông tin chi tiết về các diễn viên trong phim, giúp khán giả biết thêm về sự nghiệp và vai diễn của họ.",
   },
   {
     title: "Đạo Diễn",
-    href: "/director",
+    href: "/directors",
     description:
       "Giới thiệu các đạo diễn nổi tiếng và phong cách làm phim của họ, từ đó hiểu rõ hơn về tác phẩm.",
   },
   {
     title: "Bình Luận Phim",
-    href: "/comment",
+    href: "/comments",
     description:
       "Nơi chia sẻ nhận xét, đánh giá của khán giả về các bộ phim đang chiếu hoặc đã xem.",
   },
   {
     title: "Blog Điện Ảnh",
-    href: "/movie-blog",
+    href: "/movie-blogs",
     description:
       "Các bài viết chuyên sâu về ngành điện ảnh, từ phân tích phim đến tin tức mới nhất.",
   },

@@ -5,7 +5,7 @@ import { FilterSelectTheater } from "./FilterSelectTheater";
 import { InfoPage } from "./InfoPage";
 import { TitleH2 } from "./TitleH2";
 import Image from "next/image";
-import { MovieDetails } from "@/types/DatabaseType";
+import { MovieDetails } from "@/types/RootMovies";
 import { format, hoursToMinutes } from "date-fns";
 import { getRandomInRange } from "@/utils/utils";
 

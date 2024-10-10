@@ -15,8 +15,34 @@ import {
 import { blogs, events } from "@/constants/constHeader";
 import Image from "next/image";
 import { ListCardMovieSub } from "../CardMovie/ListCardMovieSub";
+import { GetMovieByType } from "@/lib/services_api";
+import { Movie } from "@/types/RootMovies";
 
 export default function NavHeader() {
+  const [loading, setLoading] = React.useState(false);
+  const [data, setData] = React.useState<Movie[]>([]);
+  React.useEffect(() => {
+    async function fetchData() {
+      try {
+        setLoading(true);
+        const dataTmp = await GetMovieByType();
+        if (!dataTmp) {
+          throw new Error("No data found.");
+        }
+        setData(dataTmp);
+      } catch (error) {
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchData();
+  }, []);
+
+  if (loading) return null;
+
+  const dataUpcoming = data.filter((d) => d.type === "SẮP CHIẾU");
+  const dataShowing = data.filter((d) => d.type === "ĐANG CHIẾU");
+
   return (
     <NavigationMenu className="max-lg:hidden z-20">
       <NavigationMenuList>
@@ -43,14 +69,14 @@ export default function NavHeader() {
               >
                 Phim đang chiếu
               </Link>
-              <ListCardMovieSub />
+              <ListCardMovieSub data={dataShowing} />
               <Link
                 href="movie-upcoming"
                 className="uppercase border-l-[6px] pl-2 font-light border-blue-800"
               >
                 Phim sắp chiếu
               </Link>
-              <ListCardMovieSub />
+              <ListCardMovieSub data={dataUpcoming} />
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>

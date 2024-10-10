@@ -1,14 +1,25 @@
-import { ReadonlyURLSearchParams } from "next/navigation";
-
 export function createQueryString(
   name: string,
   value: string,
-  searchParams: ReadonlyURLSearchParams
+  searchParams: URLSearchParams
 ) {
   const params = new URLSearchParams(searchParams.toString());
   params.set(name, value);
   if (value === "") params.delete(name);
   return params.toString();
+}
+
+export function deleteQueryStringParams(
+  keys: string[],
+  searchParams: URLSearchParams
+) {
+  const params = new URLSearchParams(searchParams.toString());
+
+  keys.forEach((key) => {
+    params.delete(key);
+  });
+
+  return params;
 }
 
 export function getYouTubeEmbedLink(youtubeUrl: string) {

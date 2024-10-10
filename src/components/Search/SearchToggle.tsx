@@ -14,7 +14,7 @@ export function SearchToggle() {
       {isOpen && (
         <Search
           isIcon={false}
-          className="absolute top-6 -left-10 w-40 transition-all focus-within:w-64 focus-within:-left-24"
+          className="absolute bg-white shadow-xl border-[0.5px] z-50 top-6 -left-10 w-40 transition-all focus-within:w-64 focus-within:-left-24"
         />
       )}
     </div>

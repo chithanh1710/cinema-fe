@@ -12,7 +12,11 @@ export default async function page({
 }) {
   const { page } = searchParams;
   const curPage = Number(page) || 1;
-  const data = await GetAllMovie("showing", curPage, 8);
+  const data = await GetAllMovie({
+    page: curPage,
+    pageSize: 8,
+    query: "showing",
+  });
   const listMovie = data.data;
   const { totalPage, currentPage } = data;
   return (

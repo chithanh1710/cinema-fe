@@ -1,4 +1,4 @@
-import { Movie } from "@/types/DatabaseType";
+import { Movie } from "@/types/RootMovies";
 import { format } from "date-fns";
 
 export function SeoContentPageMovie({ movie }: { movie: Movie }) {
