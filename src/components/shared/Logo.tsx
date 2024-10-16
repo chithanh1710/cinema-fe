@@ -6,12 +6,12 @@ export function Logo({ className }: { className?: string }) {
   return (
     <Link href="/">
       <Image
-        width={100}
-        height={50}
+        width={512}
+        height={304}
         priority
         alt="Logo"
-        src="/logo.png"
-        className={cn("w-24", className)}
+        src="/logo LXT.png"
+        className={cn("w-32", className)}
       />
     </Link>
   );

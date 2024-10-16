@@ -9,7 +9,7 @@ export default async function Header() {
     <header className="container_custom flex justify-between items-center lg:pt-3 pt-5 pb-2">
       <div className="flex sm:gap-10 gap-6 items-center">
         <Logo />
-        <Link href="/booking" className="lg:hidden block">
+        <Link href="/booking/step1" className="lg:hidden block">
           <Image
             width={100}
             height={40}

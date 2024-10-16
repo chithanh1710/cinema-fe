@@ -11,9 +11,18 @@ export async function ListMovieAndTheater({
   searchParams: searchParamsProps;
   id: string;
 }) {
-  const date = searchParams.date
-    ? searchParams.date + "/" + new Date().getFullYear()
-    : format(Date.now(), "dd/MM/yyyy");
+  const dateStr = searchParams.date?.toString() || format(Date.now(), "dd/MM");
+  const [day, month] = dateStr.split("/");
+  const currentDate = new Date();
+  let year = currentDate.getFullYear();
+  if (
+    +month < currentDate.getMonth() + 1 ||
+    (+month === currentDate.getMonth() + 1 && +day < currentDate.getDate())
+  ) {
+    year += 1;
+  }
+
+  const formattedDate = `${day}/${month}/${year}`;
 
   const cityName =
     searchParams.cityName?.toString() === "Toàn quốc"
@@ -25,22 +34,22 @@ export async function ListMovieAndTheater({
       : searchParams.cinemaName?.toString();
 
   const data = await GetMovieShowtimes(Number(id), cinemaName, cityName);
-
   return (
     <section className="space-y-2">
       {data.data.map((item) => {
         const showTimeButtons = item.screen_rooms.flatMap((scrRoom) =>
           scrRoom.show_dates
-            .filter((shDate) => shDate.show_time_date === date)
+            .filter((shDate) => shDate.show_time_date === formattedDate)
             .flatMap((value) =>
               value.show_times.map((shTime) => (
                 <ButtonLink
                   key={shTime.show_time_start}
                   className="px-7 py-2 duration-500 hover:bg-orange-500 hover:text-white"
-                  href={`/booking?movieId=${id}&date=${format(
-                    date,
-                    "dd/MM"
-                  )}&cityName=${item.city_name}&cinemaName=${
+                  href={`/booking/step1?movieId=${id}&date=${
+                    formattedDate.split("/")[0] +
+                    "/" +
+                    formattedDate.split("/")[1]
+                  }&cityName=${item.city_name}&cinemaName=${
                     item.cinema_name
                   }&timeStart=${shTime.show_time_start}`}
                   name={shTime.show_time_start}

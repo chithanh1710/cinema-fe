@@ -13,7 +13,13 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { createQueryString, deleteQueryStringParams } from "@/utils/utils";
 import { cn } from "@/lib/utils";
 
-export function SliderDate({ className }: { className?: string }) {
+export function SliderDate({
+  className,
+  isGetCurDate = true,
+}: {
+  className?: string;
+  isGetCurDate?: boolean;
+}) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -31,6 +37,7 @@ export function SliderDate({ className }: { className?: string }) {
       dayOfMonth: format(nextDay, "dd/MM"),
     });
   }
+
   return (
     <Carousel
       opts={{
@@ -59,9 +66,13 @@ export function SliderDate({ className }: { className?: string }) {
             {i < 5 ? (
               <div
                 className={`text-sm cursor-pointer flex flex-col aspect-square items-center justify-center gap-1 rounded-lg ${
-                  date
-                    ? date === item.dayOfMonth && "bg-blue-800 text-white"
-                    : i === 0 && "bg-blue-800 text-white"
+                  isGetCurDate
+                    ? date
+                      ? date === item.dayOfMonth && "bg-blue-800 text-white"
+                      : i === 0 && "bg-blue-800 text-white"
+                    : date &&
+                      date === item.dayOfMonth &&
+                      "bg-blue-800 text-white"
                 }`}
               >
                 <p>{item.dayOfWeek}</p>

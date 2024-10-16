@@ -59,7 +59,7 @@ export default function Footer() {
             </ul>
           </div>
           <div className="max-lg:order-[-1] max-lg:col-span-4 max-md:col-span-2 max-sm:col-span-1">
-            <Logo className="w-32" />
+            <Logo className="w-36" />
             <div className="flex gap-4 mt-4 items-center">
               <Link href="/">
                 <Image
@@ -92,8 +92,8 @@ export default function Footer() {
           </div>
         </section>
         <hr className="my-8" />
-        <section className="flex gap-4">
-          <Logo className="w-full" />
+        <section className="flex gap-4 items-center">
+          <Logo className="w-44" />
           <div>
             <h3 className="text-slate-400 font-medium uppercase">
               Trường đại học Công Thương ( HUIT )

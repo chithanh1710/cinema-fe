@@ -61,4 +61,5 @@ export interface MovieDetails {
 export interface ShowTime {
   time_start: string;
   cinemaName: string;
+  id: number;
 }

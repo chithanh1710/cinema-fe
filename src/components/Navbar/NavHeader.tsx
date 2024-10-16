@@ -15,7 +15,7 @@ import {
 import { blogs, events } from "@/constants/constHeader";
 import Image from "next/image";
 import { ListCardMovieSub } from "../CardMovie/ListCardMovieSub";
-import { GetMovieByType } from "@/lib/services_api";
+import { GetMoviesByType } from "@/lib/services_api";
 import { Movie } from "@/types/RootMovies";
 
 export default function NavHeader() {
@@ -25,7 +25,7 @@ export default function NavHeader() {
     async function fetchData() {
       try {
         setLoading(true);
-        const dataTmp = await GetMovieByType();
+        const dataTmp = await GetMoviesByType();
         if (!dataTmp) {
           throw new Error("No data found.");
         }
@@ -48,7 +48,7 @@ export default function NavHeader() {
       <NavigationMenuList>
         <NavigationMenuItem>
           <NavigationMenuLink asChild>
-            <Link href="/booking">
+            <Link href="/booking/step1">
               <Image
                 width={100}
                 height={40}

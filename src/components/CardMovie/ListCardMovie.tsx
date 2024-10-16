@@ -9,7 +9,6 @@ export async function ListCardMovie({
   nameQuery: string;
   searchParams: searchParamsProps;
 }) {
-  //TODO: Thêm dữ liệu vào đây
   const query = searchParams[nameQuery]?.toString() || "showing";
   const data = await GetAllMovie({ page: 1, pageSize: 8, query });
   const listMovie = data.data;

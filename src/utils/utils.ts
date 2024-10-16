@@ -39,3 +39,7 @@ export function getYouTubeEmbedLink(youtubeUrl: string) {
 export function getRandomInRange(x: number = 100, y: number = 100000) {
   return Math.floor(Math.random() * (y - x + 1)) + x;
 }
+
+export function formatMoney(x: number) {
+  return x.toLocaleString("vi-vn").replaceAll(".", ",") + ".000₫";
+}

@@ -35,18 +35,21 @@ export function AccordionCustoms({
     if (queryName === "cityName") {
       setActiveItem("cinemaName");
       searchParamsFilter = deleteQueryStringParams(
-        ["cinemaName", "movieId", "timeStart"],
+        ["cinemaName", "movieId", "timeStart", "date"],
         searchParams
       );
     } else if (queryName === "cinemaName") {
       setActiveItem("movieId");
       searchParamsFilter = deleteQueryStringParams(
-        ["movieId", "timeStart"],
+        ["movieId", "timeStart", "date"],
         searchParams
       );
     } else if (queryName === "movieId") {
       setActiveItem("timeStart");
-      searchParamsFilter = deleteQueryStringParams(["timeStart"], searchParams);
+      searchParamsFilter = deleteQueryStringParams(
+        ["timeStart", "date"],
+        searchParams
+      );
     }
 
     const query = createQueryString(
@@ -54,7 +57,7 @@ export function AccordionCustoms({
       value,
       searchParamsFilter || searchParams
     );
-    router.push(`${pathName}?${query}`, { scroll: false });
+    router.replace(`${pathName}?${query}`, { scroll: false });
   }
 
   return (
@@ -66,7 +69,7 @@ export function AccordionCustoms({
         {queryName === "timeStart" && (
           <div className="mb-4">
             <Suspense>
-              <SliderDate className="mx-auto !w-[80%]" />
+              <SliderDate isGetCurDate={false} className="mx-auto !w-[80%]" />
             </Suspense>
           </div>
         )}

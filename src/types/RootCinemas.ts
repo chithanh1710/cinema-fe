@@ -13,10 +13,10 @@ export interface Cinema {
   address: string;
   city: string;
   amount_rooms: number;
-  sreenRooms: SreenRoom[];
+  screenRooms: ScreenRoom[];
 }
 
-export interface SreenRoom {
+export interface ScreenRoom {
   id: number;
   name: string;
   amount_seats: number;
