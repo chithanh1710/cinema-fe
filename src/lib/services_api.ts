@@ -1,9 +1,11 @@
 import { Customer } from "@/types/Customer";
+import { RootFoodDrink } from "@/types/FoodAndDrink";
 import { RootGetAvailableDates } from "@/types/GetAvailableDates";
 import { RootGetAvailableMovies } from "@/types/GetAvailableMovies";
 import { RootGetAvailableShowtimes } from "@/types/GetAvailableShowtimes";
 import { RootGetCinemasByMovie } from "@/types/GetCinemasByMovie";
 import { RootGetSeatsByShowtime, Seat } from "@/types/GetSeatsByShowtime";
+import { RootGetTransactionDetailsByCustomerId } from "@/types/GetTransactionDetailsByCustomerId";
 import { MessageApi } from "@/types/MessgeApi";
 import { RootCinema } from "@/types/RootCinemas";
 import { Movie, RootMovieDetails, RootMovies } from "@/types/RootMovies";
@@ -175,6 +177,25 @@ export async function CreateCustomer(
   }
 }
 
+/************************* FOOD AND DRINKS *************************/
+export async function GetFoodAndDrink(): Promise<RootFoodDrink> {
+  try {
+    const res = await fetch(`${URL_API}/FoodsDrinks`, {
+      next: { revalidate: 0 },
+    });
+    if (!res.ok) {
+      throw new Error(`HTTP error! status: ${res.status}`);
+    }
+
+    const data: RootFoodDrink = await res.json();
+    if (data === null) throw new Error("No data found.");
+
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
 /************************* SEATS *************************/
 
 export async function GetSeatsByShowtime(
@@ -203,7 +224,7 @@ export async function GetSeatsByShowtime(
 /************************* FUNCTION *************************/
 export async function GetAvailableMovies(): Promise<RootGetAvailableMovies> {
   try {
-    const res = await fetch(`${URL_API}GetAvailableMovies`, {
+    const res = await fetch(`${URL_API}/GetAvailableMovies`, {
       next: { revalidate: 0 },
     });
     if (!res.ok) {
@@ -223,7 +244,7 @@ export async function GetCinemasByMovie(
   movieId: number
 ): Promise<RootGetCinemasByMovie> {
   try {
-    const res = await fetch(`${URL_API}GetCinemasByMovie?movieId=${movieId}`, {
+    const res = await fetch(`${URL_API}/GetCinemasByMovie?movieId=${movieId}`, {
       next: { revalidate: 0 },
     });
     if (!res.ok) {
@@ -245,7 +266,7 @@ export async function GetAvailableDates(
 ): Promise<RootGetAvailableDates> {
   try {
     const res = await fetch(
-      `${URL_API}GetAvailableDates?movieId=${movieId}&cinemaId=${cinemaId}`,
+      `${URL_API}/GetAvailableDates?movieId=${movieId}&cinemaId=${cinemaId}`,
       {
         next: { revalidate: 0 },
       }
@@ -270,7 +291,30 @@ export async function GetAvailableShowtimes(
 ): Promise<RootGetAvailableShowtimes> {
   try {
     const res = await fetch(
-      `${URL_API}GetAvailableShowtimes?movieId=${movieId}&cinemaId=${cinemaId}&showDate=${date}`,
+      `${URL_API}/GetAvailableShowtimes?movieId=${movieId}&cinemaId=${cinemaId}&showDate=${date}`,
+      {
+        next: { revalidate: 0 },
+      }
+    );
+    if (!res.ok) {
+      throw new Error(`HTTP error! status: ${res.status}`);
+    }
+
+    const data = await res.json();
+    if (data === null) throw new Error("No data found.");
+
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function GetTransactionDetailsByCustomerId(
+  customerId: number
+): Promise<RootGetTransactionDetailsByCustomerId> {
+  try {
+    const res = await fetch(
+      `${URL_API}/GetTransactionDetailsByCustomerId?customerId=${customerId}`,
       {
         next: { revalidate: 0 },
       }

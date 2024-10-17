@@ -56,7 +56,7 @@ export const SeatMap = ({
               {groupedSeats[row].map((seat: Seat) =>
                 seat.genre_seats === "Ghế đôi" ? (
                   <div
-                    className="col-span-2 flex max-sm:border max-sm:p-0.5 max-sm:gap-0.5 border-2 rounded-xl border-pink-500 p-1 gap-1"
+                    className="col-span-2 flex max-sm:border max-sm:p-0.5 max-sm:gap-0.5 border-2 rounded-xl border-gray-300 p-1 gap-1"
                     key={seat.id_seat}
                   >
                     <button
@@ -131,7 +131,7 @@ export const SeatMap = ({
                         ? "cursor-not-allowed bg-red-500 opacity-30"
                         : seat.status === "ĐÃ ĐẶT"
                         ? "cursor-not-allowed !bg-gray-300 text-transparent"
-                        : "bg-red-500 opacity-80"
+                        : "!bg-red-500 opacity-80"
                     } `}
                     disabled={
                       seat.status === "ĐANG TRỐNG"

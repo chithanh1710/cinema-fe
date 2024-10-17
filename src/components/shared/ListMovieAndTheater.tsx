@@ -15,6 +15,7 @@ export async function ListMovieAndTheater({
   const [day, month] = dateStr.split("/");
   const currentDate = new Date();
   let year = currentDate.getFullYear();
+
   if (
     +month < currentDate.getMonth() + 1 ||
     (+month === currentDate.getMonth() + 1 && +day < currentDate.getDate())
@@ -34,6 +35,7 @@ export async function ListMovieAndTheater({
       : searchParams.cinemaName?.toString();
 
   const data = await GetMovieShowtimes(Number(id), cinemaName, cityName);
+
   return (
     <section className="space-y-2">
       {data.data.map((item) => {

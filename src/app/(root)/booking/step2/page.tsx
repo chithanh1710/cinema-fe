@@ -1,8 +1,8 @@
-import { ButtonLink } from "@/components/Button/ButtonLink";
+import ButtonBack from "@/components/Button/ButtonBack";
+import ButtonNext from "@/components/Button/ButtonNext";
 import { SeatMap } from "@/components/shared/SeatMap";
 import { auth } from "@/lib/auth";
 import { GetCustomer, GetSeatsByShowtime } from "@/lib/services_api";
-import { Seat } from "@/types/GetSeatsByShowtime";
 import { searchParamsProps } from "@/types/Param";
 import { formatMoney } from "@/utils/utils";
 import { redirect } from "next/navigation";
@@ -104,16 +104,8 @@ export default async function page({
               Tổng cộng: <span>{formatMoney(totalPrice)}</span>
             </p>
             <div className="space-x-4">
-              <ButtonLink
-                href={`/`}
-                name="Quay lại"
-                className="border-none font-semibold"
-              />
-              <ButtonLink
-                href={`/booking/step3`}
-                name="Tiếp tục"
-                className="border-none bg-orange-50 font-semibold"
-              />
+              <ButtonBack />
+              <ButtonNext href={`/booking/step3?idShowTime=${id}`} />
             </div>
           </div>
         </div>
