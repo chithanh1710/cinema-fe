@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 
 export default async function page() {
   const session = await auth();
-  if (session?.user?.email) redirect("/taiKhoan/thongTinCaNhan");
+  if (session?.user?.email) redirect("/login");
   return (
     <main className="container">
       <h1 className="text-center text-3xl font-bold my-8">

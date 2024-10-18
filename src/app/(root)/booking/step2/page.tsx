@@ -2,7 +2,7 @@ import ButtonBack from "@/components/Button/ButtonBack";
 import ButtonNext from "@/components/Button/ButtonNext";
 import { SeatMap } from "@/components/shared/SeatMap";
 import { auth } from "@/lib/auth";
-import { GetCustomer, GetSeatsByShowtime } from "@/lib/services_api";
+import { GetSeatsByShowtime } from "@/lib/services_api";
 import { searchParamsProps } from "@/types/Param";
 import { formatMoney } from "@/utils/utils";
 import { redirect } from "next/navigation";
@@ -18,10 +18,9 @@ export default async function page({
   const showtimeId = Number(id);
   const seats = await GetSeatsByShowtime(showtimeId);
   const session = await auth();
-  if (!session?.user?.email) redirect("/login");
-  const user = await GetCustomer(session?.user?.email);
+  if (!session?.user?.id) redirect("/login");
 
-  if (!user) redirect("/login");
+  const { user } = session;
 
   const selectedSeat = seats.filter(
     (s) => s.status === "ĐANG GIỮ" && s.reservedBy === user.id
@@ -39,6 +38,7 @@ export default async function page({
     }
     return total;
   }, 0);
+
   return (
     <div className="p-10">
       <h1 className="text-xl font-bold mb-4">Chọn ghế ngồi</h1>

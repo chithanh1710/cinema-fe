@@ -32,10 +32,9 @@ export default async function page({
   const showtimeId = Number(id);
   const seats = await GetSeatsByShowtime(showtimeId);
   const session = await auth();
-  if (!session?.user?.email) redirect("/login");
-  const user = await GetCustomer(session?.user?.email);
+  if (!session?.user?.id) redirect("/login");
 
-  if (!user) redirect("/login");
+  const { user } = session;
 
   const selectedSeat = seats.filter(
     (s) => s.status === "ĐANG GIỮ" && s.reservedBy === user.id

@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 @import "./customSlider.css";
+@import "./spiner.css";
 
 html {
   scroll-behavior: smooth !important;

@@ -1,9 +1,6 @@
 import ButtonBack from "@/components/Button/ButtonBack";
-import { ButtonLink } from "@/components/Button/ButtonLink";
-import ButtonNext from "@/components/Button/ButtonNext";
 import SelectFoodAndDrink, {
   ButtonSummitFoodAndDrink,
-  ResetFoodDrinkButton,
   TotalPrice,
 } from "@/components/shared/SelectFoodAndDrink";
 import { FoodDrinkProvider } from "@/contexts/ContextFoodDrink";
@@ -17,7 +14,7 @@ import { searchParamsProps } from "@/types/Param";
 import { formatMoney } from "@/utils/utils";
 import Image from "next/image";
 import { redirect } from "next/navigation";
-import React, { Suspense } from "react";
+import React from "react";
 
 export default async function page({
   searchParams,
@@ -29,10 +26,9 @@ export default async function page({
   const showtimeId = Number(id);
   const seats = await GetSeatsByShowtime(showtimeId);
   const session = await auth();
-  if (!session?.user?.email) redirect("/login");
-  const user = await GetCustomer(session?.user?.email);
+  if (!session?.user?.id) redirect("/login");
 
-  if (!user) redirect("/login");
+  const { user } = session;
 
   const selectedSeat = seats.filter(
     (s) => s.status === "ĐANG GIỮ" && s.reservedBy === user.id

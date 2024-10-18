@@ -27,6 +27,24 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         return false;
       }
     },
+    async session({ session }) {
+      const user = await GetCustomer(session.user.email);
+      if (user) {
+        session.user.id = user.id;
+        session.user.phone = user.phone;
+        session.user.rank = user.rank;
+        session.user.transactions = user.transactions || [];
+        session.user.voucher_uses = user.voucher_uses || [];
+      } else {
+        session.user.id = null;
+        session.user.phone = null;
+        session.user.rank = null;
+        session.user.transactions = [];
+        session.user.voucher_uses = [];
+      }
+
+      return session;
+    },
   },
   pages: {
     signIn: "/login",
