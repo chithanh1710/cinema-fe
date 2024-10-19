@@ -18,7 +18,7 @@ export async function ListCardMovie({
         <CardMovie
           key={m.id}
           href={`/bookTickets/${m.id}`}
-          src={`/${m.thumbnail}`}
+          src={`${m.thumbnail}`}
           starNum={m.star}
           title={m.name}
           old={m.old}

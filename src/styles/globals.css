@@ -36,7 +36,7 @@ b {
 
 @layer utilities {
   .container_custom {
-    @apply max-w-6xl mx-auto px-16 max-lg:px-8 max-sm:px-4;
+    @apply max-w-[1300px] mx-auto px-16 max-lg:px-8 max-sm:px-4;
   }
   .px_default {
     @apply px-16 max-lg:px-8 max-sm:px-4;

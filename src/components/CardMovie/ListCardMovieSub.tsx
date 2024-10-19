@@ -9,7 +9,7 @@ export function ListCardMovieSub({ data }: { data: Movie[] }) {
           key={d.id}
           href={`/bookTickets/${d.id}`}
           starNum={d.star}
-          src={`/${d.thumbnail}`}
+          src={`${d.thumbnail}`}
           title={d.name}
         />
       ))}

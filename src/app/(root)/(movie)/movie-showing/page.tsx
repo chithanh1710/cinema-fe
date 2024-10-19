@@ -26,7 +26,7 @@ export default async function page({
           <CardMovie
             key={m.id}
             href={`/bookTickets/${m.id}`}
-            src={`/${m.image}`}
+            src={`${m.image}`}
             starNum={m.star}
             title={m.name}
             old={m.old}

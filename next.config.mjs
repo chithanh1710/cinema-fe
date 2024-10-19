@@ -1,7 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    remotePatterns: [],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "cdn.galaxycine.vn",
+        pathname: "/media/**",
+      },
+    ],
   },
 };
 

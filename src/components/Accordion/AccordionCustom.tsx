@@ -99,7 +99,7 @@ export function AccordionCustoms({
                   <div className={`relative aspect-[2/3] w-full h-auto`}>
                     <Image
                       alt={`Image ${d.name}`}
-                      src={`/${d.thumbnail}`}
+                      src={`${d.thumbnail}`}
                       fill
                       className="object-cover"
                     />

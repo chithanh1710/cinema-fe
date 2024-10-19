@@ -23,7 +23,7 @@ export function MoreInfoMovie({
       <section className="relative flex gap-6">
         <Image
           alt={`Image ${detail.name}`}
-          src={`/${detail.thumbnail}`}
+          src={`${detail.thumbnail}`}
           width={400}
           height={600}
           className="lg:max-w-[320px] lg:w-[40vw] min-w-[130px] w-[25vw] aspect-[2/3] object-fill sticky -translate-y-10 border-2 border-white rounded"

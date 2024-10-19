@@ -42,7 +42,7 @@ export default async function Page({
             width={150}
             height={300}
             alt="Ảnh mẫu"
-            src={movieId ? `/${movieFindId?.image}` : "/video-img-blank.svg"}
+            src={movieId ? `${movieFindId?.image}` : "/video-img-blank.svg"}
             className={
               movieId
                 ? "w-64 h-auto aspect-[3/2] rounded mb-4"

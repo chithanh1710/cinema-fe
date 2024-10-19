@@ -58,13 +58,16 @@ export default async function page() {
       <p className="text-sm text-gray-400 mb-8">Tổng lịch sử xem: {length}</p>
       <div className="space-y-4">
         {groupedByTime.map((gr) => (
-          <div
+          <Link
+            href={`/account/history/${session.user.id}${new Date(
+              gr.time_transaction
+            ).getTime()}`}
             key={gr.time_transaction}
             className="rounded-md bg-gray-200 p-2 shadow flex gap-4 w-full"
           >
             <Image
               alt=""
-              src={`/${gr.transactions[0].movie.thumbnail}`}
+              src={`${gr.transactions[0].movie.thumbnail}`}
               width={300}
               height={400}
               className="aspect-[2/3] object-cover w-20 rounded-md"
@@ -111,7 +114,7 @@ export default async function page() {
                 </span>
               </p>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </section>

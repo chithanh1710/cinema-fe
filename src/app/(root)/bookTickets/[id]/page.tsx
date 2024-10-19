@@ -32,7 +32,9 @@ export default async function page({
             <ListMovieAndTheater searchParams={searchParams} id={id} />
           </Suspense>
         </div>
-        <ListCardMovieASide />
+        <Suspense>
+          <ListCardMovieASide />
+        </Suspense>
       </section>
     </>
   );

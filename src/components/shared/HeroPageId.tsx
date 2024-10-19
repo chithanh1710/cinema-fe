@@ -12,7 +12,6 @@ export function HeroPageId({
   className?: string;
   detail: MovieDetails;
 }) {
-  // TODO: THEM DU LIEU VA LAY LINK YOUTUBE DE DOI THANH EMBEDLINK
   const [isOpenTrailer, setIsOpenTrailer] = useState(false);
   const embedLink = getYouTubeEmbedLink(detail.trailer);
   return (
@@ -25,7 +24,7 @@ export function HeroPageId({
       >
         <Image
           alt={`Image ${detail.name}`}
-          src={`/${detail.image}`}
+          src={`${detail.image}`}
           width={700}
           height={500}
           className="h-full w-full sm:w-auto sm:aspect-[3/2] object-fill mx-auto opacity-80"
@@ -43,11 +42,11 @@ export function HeroPageId({
       {isOpenTrailer && (
         <div
           onClick={() => setIsOpenTrailer(false)}
-          className="w-screen h-full bg-black/70 z-10 fixed top-0 left-0 flex justify-center items-center"
+          className="w-screen h-full bg-black/70 z-[9999] fixed top-0 left-0 flex justify-center items-center"
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="w-[90%] aspect-[3/2] flex items-center justify-center"
+            className="h-[80%] aspect-video flex items-center justify-center"
           >
             <iframe
               src={embedLink}
