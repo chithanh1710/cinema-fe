@@ -33,13 +33,13 @@ export function Search({
         onKeyDown={(e) => {
           if (e.key === "Enter") {
             const param = createQueryString("q", value, searchParams);
-            router.push(`${pathName}search?${param}`);
+            router.push(`/search?${param}`);
           }
         }}
         value={value}
         id="search"
         type="text"
-        className="w-full outline-none px-2"
+        className="w-full outline-none px-2 !bg-transparent"
         placeholder="Tìm kiếm"
       />
     </div>

@@ -6,70 +6,35 @@ import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-import { SkeletonSlider } from "../Skeleton/SkeletonSlider";
-
-const testData = [
-  {
-    id: "1",
-    href: "/",
-    src: "/1.jpg",
-    alt: "",
-  },
-  {
-    id: "2",
-    href: "/",
-    src: "/2.jpg",
-    alt: "",
-  },
-  {
-    id: "3",
-    href: "/",
-    src: "/3.jpg",
-    alt: "",
-  },
-  {
-    id: "4",
-    href: "/",
-    src: "/4.jpg",
-    alt: "",
-  },
-  {
-    id: "5",
-    href: "/",
-    src: "/5.jpg",
-    alt: "",
-  },
-  {
-    id: "6",
-    href: "/",
-    src: "/6.jpg",
-    alt: "",
-  },
-];
 
 export function Slider() {
-  const router = useRouter();
-  const [slides, setSlides] = useState(testData);
-  const [isLoading, setIsLoading] = useState(false);
-  useEffect(() => {
-    async function fetchSlides() {
-      try {
-        setIsLoading(true);
-        // TODO: Fetch dữ liệu
-        const data = await fetch("").then((res) => res.json());
-        if (!data) throw new Error("Not found data");
-        setSlides(data);
-      } catch (error) {
-      } finally {
-        setIsLoading(false);
-      }
-    }
-  });
-
-  if (isLoading) return <SkeletonSlider />;
-
+  const data = [
+    {
+      id: "1",
+      src: "https://cdn.galaxycine.vn/media/2024/10/9/dam-cuoi-xa-hoa---uu-dai-xa-xi-chi-co-o-galaxy-cinema-4_1728462429699.jpg",
+      alt: "",
+    },
+    {
+      id: "2",
+      src: "https://cdn.galaxycine.vn/media/2024/10/18/co-dau-hao-mon-2048_1729221071482.jpg",
+      alt: "",
+    },
+    {
+      id: "3",
+      src: "https://cdn.galaxycine.vn/media/2024/10/10/tee-yod-2-2048_1728531526579.jpg",
+      alt: "",
+    },
+    {
+      id: "4",
+      src: "https://cdn.galaxycine.vn/media/2024/10/15/bocchi-the-rock-recap-part-2-1_1729002609324.jpg",
+      alt: "",
+    },
+    {
+      id: "5",
+      src: "https://cdn.galaxycine.vn/media/2024/9/30/shopee-3_1727693002891.jpg",
+      alt: "",
+    },
+  ];
   return (
     <Swiper
       modules={[Pagination, Autoplay, Navigation]}
@@ -85,11 +50,8 @@ export function Slider() {
       loop
       className="mySwiper cursor-pointer"
     >
-      {slides.map((item) => (
+      {data.map((item) => (
         <SwiperSlide
-          onClick={() => {
-            router.push(item.href);
-          }}
           className="w-full h-full aspect-[1024/341] max-md:aspect-[3/2]"
           key={item.id}
         >

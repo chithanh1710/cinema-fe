@@ -1,27 +1,31 @@
 import { CardMovie } from "@/components/CardMovie/CardMovie";
+import { Search } from "@/components/Search/Search";
 import { PaginationCustom } from "@/components/shared/PaginationCustom";
-import { SeoContentPageMovie } from "@/components/shared/SeoContentPageMovie";
 import { GetAllMovie } from "@/lib/services_api";
-import styles from "@/styles/seoContentPageMovie.module.css";
 import { searchParamsProps } from "@/types/Param";
+import React from "react";
 
 export default async function page({
   searchParams,
 }: {
   searchParams: searchParamsProps;
 }) {
-  const { page } = searchParams;
-  const curPage = Number(page) || 1;
+  const { q, page } = searchParams;
   const data = await GetAllMovie({
-    page: curPage,
+    page: Number(page) || 1,
     pageSize: 8,
-    query: "upcoming",
+    q: q?.toString() || "",
   });
   const listMovie = data.data;
-  const { totalPage, currentPage } = data;
+  const { totalPage, currentPage, totalItem } = data;
   return (
-    <>
-      <ul className="grid md:grid-cols-4 grid-cols-2 mt-8 gap-8">
+    <section className="container_custom">
+      <div className="mt-4 space-y-2 bg-orange-500 rounded-lg shadow-md text-white p-4 sticky top-2 left-0 z-20">
+        <h3 className="font-bold text-2xl">Tìm kiếm phim theo tên: {q}</h3>
+        <p className="font-semibold">Số lượng phim tìm thấy: {totalItem}</p>
+        <Search isIcon={false} className="border-none text-black bg-white" />
+      </div>
+      <ul className="grid md:grid-cols-4 grid-cols-2 mt-8 mb-4 gap-8">
         {listMovie.map((m) => (
           <CardMovie
             key={m.id}
@@ -34,14 +38,6 @@ export default async function page({
         ))}
       </ul>
       <PaginationCustom totalPage={totalPage} curPage={currentPage} />
-      <h2 className="border-l-[4px] border-l-blue-800 pl-2 text-xl uppercase font-semibold text-gray-600 max-sm:hidden my-16">
-        Phim sắp chiếu
-      </h2>
-      <ul className={styles["content-seo-page"]}>
-        {listMovie.map((m) => (
-          <SeoContentPageMovie key={m.id} movie={m} />
-        ))}
-      </ul>
-    </>
+    </section>
   );
 }

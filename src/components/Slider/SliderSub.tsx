@@ -6,69 +6,40 @@ import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-import { SkeletonSlider } from "../Skeleton/SkeletonSlider";
-
-const testData = [
-  {
-    id: "1",
-    href: "/",
-    src: "/1.jpg",
-    alt: "",
-  },
-  {
-    id: "2",
-    href: "/",
-    src: "/2.jpg",
-    alt: "",
-  },
-  {
-    id: "3",
-    href: "/",
-    src: "/3.jpg",
-    alt: "",
-  },
-  {
-    id: "4",
-    href: "/",
-    src: "/4.jpg",
-    alt: "",
-  },
-  {
-    id: "5",
-    href: "/",
-    src: "/5.jpg",
-    alt: "",
-  },
-  {
-    id: "6",
-    href: "/",
-    src: "/6.jpg",
-    alt: "",
-  },
-];
 
 export function SliderSub() {
-  const router = useRouter();
-  const [slides, setSlides] = useState(testData);
-  const [isLoading, setIsLoading] = useState(false);
-  useEffect(() => {
-    async function fetchSlides() {
-      try {
-        setIsLoading(true);
-        // TODO: Fetch dữ liệu
-        const data = await fetch("").then((res) => res.json());
-        if (!data) throw new Error("Not found data");
-        setSlides(data);
-      } catch (error) {
-      } finally {
-        setIsLoading(false);
-      }
-    }
-  });
-
-  if (isLoading) return <SkeletonSlider />;
+  const data = [
+    {
+      id: "1",
+      src: "https://cdn.galaxycine.vn/media/2024/10/9/dam-cuoi-xa-hoa---uu-dai-xa-xi-chi-co-o-galaxy-cinema-4_1728462429699.jpg",
+      alt: "Đám Cưới Xa Hoa - Ưu Đãi Xa Xỉ Chỉ Có Ở Galaxy Cinema",
+    },
+    {
+      id: "2",
+      src: "https://cdn.galaxycine.vn/media/2023/11/23/giaveu22-digital-1800x1200_1700731546949.jpg",
+      alt: "Giá Vé U22  - Chỉ Từ 45k",
+    },
+    {
+      id: "3",
+      src: "https://cdn.galaxycine.vn/media/2023/5/23/quy-dinh-do-tuoi-digital-1350x900_1684835377244.jpg",
+      alt: "Tiêu Chí Phân Loại Phim Theo Lứa Tuổi",
+    },
+    {
+      id: "4",
+      src: "https://cdn.galaxycine.vn/media/2024/9/30/shopee-2_1727692944053.jpg",
+      alt: "Voucher ShopeePay Giảm 10K Dành Tặng Các Stars!",
+    },
+    {
+      id: "5",
+      src: "https://cdn.galaxycine.vn/media/2024/1/19/1350x900_1705628944220.jpg",
+      alt: "Mưa Quà Tặng Cho Thành Viên Galaxy Cinema 2024",
+    },
+    {
+      id: "6",
+      src: "https://cdn.galaxycine.vn/media/2024/4/16/750_1713257524954.jpg",
+      alt: "Happy Day - Vé Chỉ Từ 50K",
+    },
+  ];
 
   return (
     <Swiper
@@ -89,20 +60,15 @@ export function SliderSub() {
           spaceBetween: 30,
         },
         800: {
-          slidesPerView: 3,
-          spaceBetween: 10,
+          slidesPerView: 4,
+          spaceBetween: 20,
         },
       }}
       loop
       className="mySwiper cursor-pointer"
     >
-      {slides.map((item) => (
-        <SwiperSlide
-          onClick={() => {
-            router.push(item.href);
-          }}
-          key={item.id}
-        >
+      {data.map((item) => (
+        <SwiperSlide key={item.id}>
           <Image
             alt={item.alt}
             src={item.src}
@@ -111,8 +77,7 @@ export function SliderSub() {
             className="h-full aspect-[3/2] object-fill mx-auto"
           />
           <p className="text-sm font-semibold text-center mt-2 px-2">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta quos
-            consectetur
+            {item.alt}
           </p>
         </SwiperSlide>
       ))}

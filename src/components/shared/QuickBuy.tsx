@@ -102,7 +102,7 @@ export function QuickBuy() {
   const showTimeFormat = movieShowtime && format(movieShowtime, "HH:mm");
 
   return (
-    <div className="absolute flex justify-between items-center left-1/2 -translate-x-1/2 -bottom-10 h-16 w-[80%] z-10 bg-white max-lg:hidden">
+    <div className="absolute flex justify-between items-center left-1/2 -translate-x-1/2 -bottom-10 h-16 w-[80%] z-10 bg-white max-lg:hidden shadow-md">
       <Select
         disabled={movieLoading}
         value={movie}

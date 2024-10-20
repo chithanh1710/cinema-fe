@@ -17,7 +17,6 @@ export default async function page({
   const { id } = params;
   const data = await GetMovieById(Number(id));
   const movieDetails = data.data[0];
-
   return (
     <>
       <section className="grid grid-cols-9">
@@ -33,7 +32,7 @@ export default async function page({
           </Suspense>
         </div>
         <Suspense>
-          <ListCardMovieASide />
+          <ListCardMovieASide movieId={movieDetails.id} />
         </Suspense>
       </section>
     </>
