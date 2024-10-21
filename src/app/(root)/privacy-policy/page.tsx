@@ -1,5 +1,13 @@
 export const revalidate = 9999999;
 
+export const generateMetadata = () => {
+  return {
+    title: "Privacy Policy - Galaxy Cinema",
+    description:
+      "Read our privacy policy to understand how we protect your information.",
+  };
+};
+
 export default function Page() {
   return (
     <section className="container_custom">

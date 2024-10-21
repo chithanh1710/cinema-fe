@@ -10,11 +10,10 @@ export async function ListBlog({
   nameQuery: string;
   searchParams: searchParamsProps;
 }) {
-  const query = searchParams[nameQuery];
+  const query =
+    searchParams[nameQuery] === "blog-movie" ? "blog-movie" : "comment-movie";
 
-  const blogsToShow = blogsData
-    .filter((b) => (query ? b.type === query : true))
-    .slice(0, 4);
+  const blogsToShow = blogsData.filter((b) => b.type === query).slice(0, 4);
 
   return (
     <ul className="grid lg:grid-cols-2 lg:grid-rows-3 mt-8 gap-8 ">

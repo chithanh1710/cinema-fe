@@ -1,5 +1,12 @@
 export const revalidate = 9999999;
 
+export const generateMetadata = () => {
+  return {
+    title: "About Us - Galaxy Cinema",
+    description: "Learn more about Galaxy Cinema and our mission.",
+  };
+};
+
 export default function Page() {
   return (
     <section className="container_custom">
