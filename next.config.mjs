@@ -7,6 +7,11 @@ const nextConfig = {
         hostname: "cdn.galaxycine.vn",
         pathname: "/media/**",
       },
+      {
+        protocol: "https",
+        hostname: "www.galaxycine.vn",
+        pathname: "/media/**",
+      },
     ],
   },
 };

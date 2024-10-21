@@ -106,7 +106,7 @@ export function CinemaInfo() {
         </Link>{" "}
         ở{" "}
         <i>
-          <Link href="/movie-blog">Góc Điện Ảnh</Link>
+          <Link href="/movie-blogs">Góc Điện Ảnh</Link>
         </i>{" "}
         để đọc những bài bình luận chân thật nhất, tham khảo và cân nhắc. Sau
         đó, chỉ việc đặt vé bằng box <i>Mua Vé Nhanh</i> ngay ở đầu trang để

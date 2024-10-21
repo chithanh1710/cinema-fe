@@ -1,3 +1,7 @@
+export default function page() {
+  return <div>page</div>;
+}
+
 // import { auth } from "@/_libs/auth";
 // import DatePicker from "../../../../_components/DatePicker";
 // import { getTinhThanhVN } from "@/_libs/service";

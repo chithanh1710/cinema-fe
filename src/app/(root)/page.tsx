@@ -40,7 +40,7 @@ export default function Home({
       </section>
       <hr className="border-t-[6px] my-16 border-gray-100" />
 
-      <section className="container_custom">
+      <section id="blog-movies" className="container_custom">
         <Suspense>
           <FilterMain
             nameQuery={filterBlogs.nameQuery}
@@ -54,7 +54,6 @@ export default function Home({
             searchParams={searchParams}
           />
         </Suspense>
-        <ButtonMainOutline href="movie-blog" />
       </section>
       <hr className="border-t-[6px] my-16 border-gray-100" />
       <section className="container_custom">

@@ -3,7 +3,6 @@ import { Search } from "@/components/Search/Search";
 import { PaginationCustom } from "@/components/shared/PaginationCustom";
 import { GetAllMovie } from "@/lib/services_api";
 import { searchParamsProps } from "@/types/Param";
-import React from "react";
 
 export default async function page({
   searchParams,

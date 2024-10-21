@@ -38,13 +38,13 @@ export const blogs: { title: string; href: string; description: string }[] = [
   },
   {
     title: "Bình Luận Phim",
-    href: "/comments",
+    href: "/#blog-movies",
     description:
       "Nơi chia sẻ nhận xét, đánh giá của khán giả về các bộ phim đang chiếu hoặc đã xem.",
   },
   {
     title: "Blog Điện Ảnh",
-    href: "/movie-blogs",
+    href: "/#blog-movies",
     description:
       "Các bài viết chuyên sâu về ngành điện ảnh, từ phân tích phim đến tin tức mới nhất.",
   },
