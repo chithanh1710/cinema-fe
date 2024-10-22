@@ -90,7 +90,7 @@ export function ButtonSummitFoodAndDrink({
 
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/AddFoodDrinkTransaction`,
+        `${process.env.NEXT_PUBLIC_API_URL}AddFoodDrinkTransaction`,
         {
           method: "POST",
           headers: {
@@ -105,6 +105,8 @@ export function ButtonSummitFoodAndDrink({
       }
 
       const result = await response.json();
+
+      console.log(result);
 
       router.replace(`/booking/step4?idShowTime=${showTimeId}`);
     } catch (error) {
@@ -138,7 +140,7 @@ export function ResetFoodDrinkButton({
 
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/ResetFoodDrinkTransaction`,
+        `${process.env.NEXT_PUBLIC_API_URL}ResetFoodDrinkTransaction`,
         {
           method: "POST",
           headers: {

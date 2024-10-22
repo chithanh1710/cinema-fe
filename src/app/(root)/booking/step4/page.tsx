@@ -86,7 +86,6 @@ export default async function page({
   );
 
   const totalAmount = totalAmountFoodItems + totalAmountSeatItems;
-
   return (
     <section className="container_custom mt-4 relative">
       <div className="flex gap-10 max-lg:flex-col">
@@ -143,7 +142,10 @@ export default async function page({
           </Table>
         </div>
         <div className="w-full">
-          <QRCodeComponent customerId={user.id} />
+          <QRCodeComponent
+            selectedSeatId={selectedSeatId}
+            customerId={user.id}
+          />
         </div>
       </div>
     </section>

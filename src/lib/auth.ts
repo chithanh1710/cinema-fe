@@ -21,9 +21,9 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             await CreateCustomer(user.name, user.email);
           }
         }
-
         return true;
       } catch (error) {
+        console.error("Error during signIn:", error);
         return false;
       }
     },
@@ -42,7 +42,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         session.user.transactions = [];
         session.user.voucher_uses = [];
       }
-
       return session;
     },
   },

@@ -21,7 +21,7 @@ const holdSeats = async (
   CustomerId: number
 ) => {
   try {
-    const res = await fetch(`${URL_API}/HoldSeat`, {
+    const res = await fetch(`${URL_API}HoldSeat`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -48,7 +48,7 @@ const unholdSeats = async (
   CustomerId: number
 ) => {
   try {
-    const res = await fetch(`${URL_API}/UnHoldSeat`, {
+    const res = await fetch(`${URL_API}UnHoldSeat`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -75,6 +75,7 @@ export async function seatAction(
   seats: Seat[],
   formData: FormData
 ) {
+  console.log(showTimeId, Number(formData.get("seatId")), userId);
   try {
     const ShowtimeId = showTimeId;
     const SeatId = Number(formData.get("seatId"));

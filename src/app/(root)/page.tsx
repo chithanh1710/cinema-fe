@@ -10,6 +10,7 @@ import { SliderSub } from "@/components/Slider/SliderSub";
 import { CinemaInfo } from "@/components/shared/CinemaInfo";
 import { QuickBuy } from "@/components/shared/QuickBuy";
 import { TitleH2 } from "@/components/shared/TitleH2";
+import Line from "@/components/shared/Line";
 
 export default function Home({
   searchParams,
@@ -38,7 +39,7 @@ export default function Home({
         </Suspense>
         <ButtonMainOutline href="movie-showing" />
       </section>
-      <hr className="border-t-[6px] my-16 border-gray-100" />
+      <Line />
 
       <section id="blog-movies" className="container_custom">
         <Suspense>
@@ -55,12 +56,12 @@ export default function Home({
           />
         </Suspense>
       </section>
-      <hr className="border-t-[6px] my-16 border-gray-100" />
+      <Line />
       <section className="container_custom">
         <TitleH2 text="Tin khuyến mãi" />
         <SliderSub />
       </section>
-      <hr className="border-t-[6px] my-16 border-gray-100" />
+      <Line />
       <section className="container_custom">
         <TitleH2 text="Trang chủ" />
         <CinemaInfo />

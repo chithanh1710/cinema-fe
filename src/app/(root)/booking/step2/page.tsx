@@ -19,9 +19,7 @@ export default async function page({
   const seats = await GetSeatsByShowtime(showtimeId);
   const session = await auth();
   if (!session?.user?.id) redirect("/login");
-
   const { user } = session;
-
   const selectedSeat = seats.filter(
     (s) => s.status === "ĐANG GIỮ" && s.reservedBy === user.id
   );
@@ -38,7 +36,6 @@ export default async function page({
     }
     return total;
   }, 0);
-
   return (
     <div className="p-10">
       <h1 className="text-xl font-bold mb-4">Chọn ghế ngồi</h1>

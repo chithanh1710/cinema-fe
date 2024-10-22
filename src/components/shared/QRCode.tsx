@@ -12,7 +12,13 @@ import { Button } from "../ui/button";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 
-export function QRCodeComponent({ customerId }: { customerId: number }) {
+export function QRCodeComponent({
+  customerId,
+  selectedSeatId,
+}: {
+  customerId: number;
+  selectedSeatId: number;
+}) {
   const router = useRouter();
   const [OTP, setOTP] = useState("");
   const randomNumber = useMemo(
@@ -26,6 +32,34 @@ export function QRCodeComponent({ customerId }: { customerId: number }) {
       )}`,
     []
   );
+
+  const handleReset = async () => {
+    const body = {
+      customerId,
+      selectedSeatId,
+    };
+
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}ResetFoodDrinkTransaction`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(body),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Có lỗi xảy ra khi hoàn tác giao dịch.");
+      }
+
+      const data = await response.json();
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <div className="flex items-center justify-center flex-col gap-10 h-full">
@@ -52,8 +86,25 @@ export function QRCodeComponent({ customerId }: { customerId: number }) {
       <div className="flex gap-4">
         <Button
           className="bg-red-400"
-          onClick={() => {
-            console.log(OTP);
+          onClick={async () => {
+            await handleReset();
+            await toast.promise(
+              fetch(
+                `${process.env.NEXT_PUBLIC_API_URL}/transactions/${customerId}`,
+                {
+                  method: "DELETE",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                }
+              ),
+              {
+                error: "Có lỗi xảy ra khi thanh toán",
+                loading: "Đang thực hiện huỷ thanh toán",
+                success: "Huỷ thanh toán thành công",
+              }
+            );
+            router.replace("/booking/step1");
           }}
         >
           Huỷ
@@ -78,7 +129,7 @@ export function QRCodeComponent({ customerId }: { customerId: number }) {
                   success: "Thanh toán thành công",
                 }
               );
-              router.replace("/booking/step5");
+              router.replace("/account/history");
             } else {
               toast.error("Mã OTP không đúng");
             }
