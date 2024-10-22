@@ -59,3 +59,16 @@
   animation-delay: 0.75s;
   @apply bg-orange-500/50;
 }
+
+.classic-2 {
+  font-weight: bold;
+  font-size: 22px;
+  padding-bottom: 8px;
+  background: linear-gradient(currentColor 0 0) 0 100%/0% 3px no-repeat;
+  animation: c2 2s linear infinite;
+}
+@keyframes c2 {
+  to {
+    background-size: 100% 3px;
+  }
+}

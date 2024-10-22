@@ -13,7 +13,6 @@ export function Search({
   isIcon: boolean;
 }) {
   const [value, setValue] = useState("");
-  const pathName = usePathname();
   const router = useRouter();
   const searchParams = useSearchParams();
   return (

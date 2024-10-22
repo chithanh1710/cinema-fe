@@ -3,7 +3,7 @@ import { searchParamsProps } from "@/types/Param";
 import { LikeAndView } from "./LikeAndView";
 import Image from "next/image";
 
-export async function ListBlog({
+export function ListBlog({
   nameQuery,
   searchParams,
 }: {

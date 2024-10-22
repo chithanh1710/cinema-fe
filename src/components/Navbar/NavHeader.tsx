@@ -1,6 +1,4 @@
 "use client";
-
-import * as React from "react";
 import Link from "next/link";
 
 import { cn } from "@/lib/utils";
@@ -14,35 +12,10 @@ import {
 } from "@/components/ui/navigation-menu";
 import { blogs, events } from "@/constants/constHeader";
 import Image from "next/image";
-import { ListCardMovieSub } from "../CardMovie/ListCardMovieSub";
-import { GetMoviesByType } from "@/lib/services_api";
-import { Movie } from "@/types/RootMovies";
+import { forwardRef, ElementRef, ComponentPropsWithoutRef } from "react";
+import NavMovie from "./NavMovie";
 
 export default function NavHeader() {
-  const [loading, setLoading] = React.useState(false);
-  const [data, setData] = React.useState<Movie[]>([]);
-  React.useEffect(() => {
-    async function fetchData() {
-      try {
-        setLoading(true);
-        const dataTmp = await GetMoviesByType();
-        if (!dataTmp) {
-          throw new Error("No data found.");
-        }
-        setData(dataTmp);
-      } catch (error) {
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchData();
-  }, []);
-
-  if (loading) return null;
-
-  const dataUpcoming = data.filter((d) => d.type === "SẮP CHIẾU");
-  const dataShowing = data.filter((d) => d.type === "ĐANG CHIẾU");
-
   return (
     <NavigationMenu className="max-lg:hidden z-20">
       <NavigationMenuList>
@@ -59,27 +32,7 @@ export default function NavHeader() {
             </Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
-        <NavigationMenuItem className="!ml-6">
-          <NavigationMenuTrigger>Phim</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="flex flex-col gap-4 p-4 w-[500px]">
-              <Link
-                href="movie-showing"
-                className="uppercase border-l-[6px] pl-2 font-light border-blue-800"
-              >
-                Phim đang chiếu
-              </Link>
-              <ListCardMovieSub data={dataShowing} />
-              <Link
-                href="movie-upcoming"
-                className="uppercase border-l-[6px] pl-2 font-light border-blue-800"
-              >
-                Phim sắp chiếu
-              </Link>
-              <ListCardMovieSub data={dataUpcoming} />
-            </ul>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
+        <NavMovie />
         <NavigationMenuItem>
           <NavigationMenuTrigger>Góc điện ảnh</NavigationMenuTrigger>
           <NavigationMenuContent>
@@ -117,29 +70,28 @@ export default function NavHeader() {
   );
 }
 
-const ListItem = React.forwardRef<
-  React.ElementRef<"a">,
-  React.ComponentPropsWithoutRef<"a">
->(({ className, title, children, href, ...props }, ref) => {
-  return (
-    <li>
-      <NavigationMenuLink asChild>
-        <Link
-          href={href || ""}
-          ref={ref}
-          className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-            className
-          )}
-          {...props}
-        >
-          <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-            {children}
-          </p>
-        </Link>
-      </NavigationMenuLink>
-    </li>
-  );
-});
+const ListItem = forwardRef<ElementRef<"a">, ComponentPropsWithoutRef<"a">>(
+  ({ className, title, children, href, ...props }, ref) => {
+    return (
+      <li>
+        <NavigationMenuLink asChild>
+          <Link
+            href={href || ""}
+            ref={ref}
+            className={cn(
+              "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+              className
+            )}
+            {...props}
+          >
+            <div className="text-sm font-medium leading-none">{title}</div>
+            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+              {children}
+            </p>
+          </Link>
+        </NavigationMenuLink>
+      </li>
+    );
+  }
+);
 ListItem.displayName = "ListItem";

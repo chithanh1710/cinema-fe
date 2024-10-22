@@ -14,6 +14,7 @@ export default async function page({
   params: paramsProps;
   searchParams: searchParamsProps;
 }) {
+  // TODO: MAI LAM TIEP TRANG NAY
   const { id } = params;
   const data = await GetMovieById(Number(id));
   const movieDetails = data.data[0];
@@ -23,7 +24,6 @@ export default async function page({
         <HeroPageId detail={movieDetails} className="col-span-9" />
         <div className="col-span-6 container_custom max-xl:col-span-9 w-full">
           <MoreInfoMovie id={id} detail={movieDetails} />
-
           <Suspense
             key={`${searchParams.cityName}_${searchParams.cinemaName}_${searchParams.date}_${id}`}
             fallback={<SkeletonListMovieAndTheater />}

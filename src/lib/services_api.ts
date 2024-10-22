@@ -26,6 +26,7 @@ export async function GetActors({
   pageSize: number;
 }): Promise<RootActors> {
   try {
+    await new Promise((res) => setTimeout(() => res(""), 5000));
     const res = await fetch(
       `${URL_API}actors?page=${page}&pageSize=${pageSize}`
     );
@@ -48,6 +49,7 @@ export async function GetActorsById({
   id: number;
 }): Promise<DaumActors> {
   try {
+    await new Promise((res) => setTimeout(() => res(""), 5000));
     const res = await fetch(`${URL_API}actors/${id}`);
     if (!res.ok) {
       throw new Error(`HTTP error! status: ${res.status}`);
@@ -71,6 +73,7 @@ export async function GetGenres({
   pageSize: number;
 }): Promise<RootGenres> {
   try {
+    await new Promise((res) => setTimeout(() => res(""), 5000));
     const res = await fetch(
       `${URL_API}genres?page=${page}&pageSize=${pageSize}`
     );
@@ -93,6 +96,7 @@ export async function GetGenresById({
   id: number;
 }): Promise<DaumGenres> {
   try {
+    await new Promise((res) => setTimeout(() => res(""), 5000));
     const res = await fetch(`${URL_API}genres/${id}`);
     if (!res.ok) {
       throw new Error(`HTTP error! status: ${res.status}`);
@@ -116,6 +120,7 @@ export async function GetDirectors({
   pageSize: number;
 }): Promise<RootDirectors> {
   try {
+    await new Promise((res) => setTimeout(() => res(""), 5000));
     const res = await fetch(
       `${URL_API}directors?page=${page}&pageSize=${pageSize}`
     );
@@ -138,6 +143,7 @@ export async function GetDirectorById({
   id: number;
 }): Promise<DaumDirectors> {
   try {
+    await new Promise((res) => setTimeout(() => res(""), 5000));
     const res = await fetch(`${URL_API}directors/${id}`);
     if (!res.ok) {
       throw new Error(`HTTP error! status: ${res.status}`);
@@ -174,6 +180,7 @@ export async function GetAllMovie({
   q?: string;
 }): Promise<RootMovies> {
   try {
+    await new Promise((res) => setTimeout(() => res(""), 5000));
     const filterByType = query ? "&type=" + query : "";
     const filterByCinemaName = cinemaName ? "&cinemaName=" + cinemaName : "";
     const filterByDirector = directorId ? "&directorId=" + directorId : "";
@@ -182,7 +189,7 @@ export async function GetAllMovie({
     const filterBySearch = q ? "&q=" + q : "";
     const res = await fetch(
       `${URL_API}movies?page=${page}&pageSize=${pageSize}${filterBySearch}${filterByType}${filterByCinemaName}${filterByDirector}${filterByActor}${filterByGenre}`,
-      { next: { revalidate: 0 } }
+      { next: { revalidate: 200 } }
     );
     if (!res.ok) {
       throw new Error(`HTTP error! status: ${res.status}`);
@@ -199,8 +206,9 @@ export async function GetAllMovie({
 
 export async function GetMoviesByType(): Promise<Movie[]> {
   try {
+    await new Promise((res) => setTimeout(() => res(""), 5000));
     const res = await fetch(`${URL_API}GetMoviesByType`, {
-      next: { revalidate: 0 },
+      next: { revalidate: 200 },
     });
     if (!res.ok) {
       throw new Error(`HTTP error! status: ${res.status}`);
@@ -217,8 +225,9 @@ export async function GetMoviesByType(): Promise<Movie[]> {
 
 export async function GetMovieById(id: number): Promise<RootMovieDetails> {
   try {
+    await new Promise((res) => setTimeout(() => res(""), 5000));
     const res = await fetch(`${URL_API}movies/${id}`, {
-      next: { revalidate: 0 },
+      next: { revalidate: 200 },
     });
     if (!res.ok) {
       throw new Error(`HTTP error! status: ${res.status}`);
@@ -239,12 +248,13 @@ export async function GetMovieShowtimes(
   cityName?: string
 ): Promise<RootMovieShowtimes> {
   try {
+    await new Promise((res) => setTimeout(() => res(""), 5000));
     const cinemaQuery = cinemaName ? `&cinemaName=${cinemaName}` : "";
     const cityQuery = cityName ? `&cityName=${cityName}` : "";
     const res = await fetch(
       `${URL_API}GetMovieShowtimes?movieId=${movieId}${cinemaQuery}${cityQuery}`,
       {
-        next: { revalidate: 0 },
+        next: { revalidate: 200 },
       }
     );
     if (!res.ok) {
@@ -263,9 +273,10 @@ export async function GetMovieShowtimes(
 /************************* CINEMA *************************/
 export async function GetAllCinema(q: string = ""): Promise<RootCinema> {
   try {
+    await new Promise((res) => setTimeout(() => res(""), 5000));
     const search = q ? "&q=" + q : "";
     const res = await fetch(`${URL_API}cinemas?${search}`, {
-      next: { revalidate: 0 },
+      next: { revalidate: 200 },
     });
     if (!res.ok) {
       throw new Error(`HTTP error! status: ${res.status}`);
@@ -284,7 +295,7 @@ export async function GetAllCinema(q: string = ""): Promise<RootCinema> {
 export async function GetCustomer(email: string): Promise<Customer | null> {
   try {
     const res = await fetch(`${URL_API}customers?email=${email}`, {
-      next: { revalidate: 0 },
+      next: { revalidate: 200 },
     });
 
     const data = await res.json();
@@ -329,8 +340,9 @@ export async function CreateCustomer(
 /************************* FOOD AND DRINKS *************************/
 export async function GetFoodAndDrink(): Promise<RootFoodDrink> {
   try {
+    await new Promise((res) => setTimeout(() => res(""), 5000));
     const res = await fetch(`${URL_API}FoodsDrinks`, {
-      next: { revalidate: 0 },
+      next: { revalidate: 200 },
     });
     if (!res.ok) {
       throw new Error(`HTTP error! status: ${res.status}`);
@@ -350,8 +362,9 @@ export async function GetTransactionsByUserId(
   userId: number
 ): Promise<RootTransactions> {
   try {
+    await new Promise((res) => setTimeout(() => res(""), 5000));
     const res = await fetch(`${URL_API}transactions/${userId}`, {
-      next: { revalidate: 0 },
+      next: { revalidate: 200 },
     });
     if (!res.ok) {
       throw new Error(`HTTP error! status: ${res.status}`);
@@ -371,10 +384,11 @@ export async function GetSeatsByShowtime(
   showtimeId: number
 ): Promise<RootGetSeatsByShowtime> {
   try {
+    await new Promise((res) => setTimeout(() => res(""), 5000));
     const res = await fetch(
       `${URL_API}GetSeatsByShowtime?showtimeId=${showtimeId}`,
       {
-        next: { revalidate: 0 },
+        next: { revalidate: 200 },
       }
     );
     if (!res.ok) {
@@ -393,8 +407,9 @@ export async function GetSeatsByShowtime(
 /************************* FUNCTION *************************/
 export async function GetAvailableMovies(): Promise<RootGetAvailableMovies> {
   try {
+    await new Promise((res) => setTimeout(() => res(""), 5000));
     const res = await fetch(`${URL_API}GetAvailableMovies`, {
-      next: { revalidate: 0 },
+      next: { revalidate: 200 },
     });
     if (!res.ok) {
       throw new Error(`HTTP error! status: ${res.status}`);
@@ -413,8 +428,9 @@ export async function GetCinemasByMovie(
   movieId: number
 ): Promise<RootGetCinemasByMovie> {
   try {
+    await new Promise((res) => setTimeout(() => res(""), 5000));
     const res = await fetch(`${URL_API}GetCinemasByMovie?movieId=${movieId}`, {
-      next: { revalidate: 0 },
+      next: { revalidate: 200 },
     });
     if (!res.ok) {
       throw new Error(`HTTP error! status: ${res.status}`);
@@ -434,10 +450,11 @@ export async function GetAvailableDates(
   cinemaId: number
 ): Promise<RootGetAvailableDates> {
   try {
+    await new Promise((res) => setTimeout(() => res(""), 5000));
     const res = await fetch(
       `${URL_API}GetAvailableDates?movieId=${movieId}&cinemaId=${cinemaId}`,
       {
-        next: { revalidate: 0 },
+        next: { revalidate: 200 },
       }
     );
     if (!res.ok) {
@@ -459,10 +476,11 @@ export async function GetAvailableShowtimes(
   date: string
 ): Promise<RootGetAvailableShowtimes> {
   try {
+    await new Promise((res) => setTimeout(() => res(""), 5000));
     const res = await fetch(
       `${URL_API}GetAvailableShowtimes?movieId=${movieId}&cinemaId=${cinemaId}&showDate=${date}`,
       {
-        next: { revalidate: 0 },
+        next: { revalidate: 200 },
       }
     );
     if (!res.ok) {
@@ -482,10 +500,11 @@ export async function GetTransactionDetailsByCustomerId(
   customerId: number
 ): Promise<RootGetTransactionDetailsByCustomerId> {
   try {
+    await new Promise((res) => setTimeout(() => res(""), 5000));
     const res = await fetch(
       `${URL_API}GetTransactionDetailsByCustomerId?customerId=${customerId}`,
       {
-        next: { revalidate: 0 },
+        next: { revalidate: 200 },
       }
     );
     if (!res.ok) {

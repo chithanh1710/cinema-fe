@@ -8,12 +8,14 @@ import Link from "next/link";
 export default async function page({ params }: { params: paramsProps }) {
   const { id } = params;
   const actorId = Number(id);
-  const actor = await GetActorsById({ id: actorId });
-  const res = await GetAllMovie({
-    page: 1,
-    pageSize: 10,
-    actorId: actor.id,
-  });
+  const [actor, res] = await Promise.all([
+    GetActorsById({ id: actorId }),
+    GetAllMovie({
+      page: 1,
+      pageSize: 10,
+      actorId: actorId,
+    }),
+  ]);
 
   const listMovieByActor = res.data;
 

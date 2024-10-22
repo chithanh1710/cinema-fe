@@ -53,14 +53,8 @@ export const blogs: { title: string; href: string; description: string }[] = [
 export const events: { title: string; href: string; description: string }[] = [
   {
     title: "Ưu đãi",
-    href: "/deal",
+    href: "/#deal",
     description:
       "Những ưu đãi và khuyến mãi đặc biệt dành cho người dùng, bao gồm mã giảm giá và các sự kiện hấp dẫn.",
-  },
-  {
-    title: "Phim hay tháng",
-    href: "/movie-month",
-    description:
-      "Danh sách các bộ phim được đề cử là hay nhất trong tháng, được lựa chọn dựa trên sự yêu thích của khán giả.",
   },
 ];

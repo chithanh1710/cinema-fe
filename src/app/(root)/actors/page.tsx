@@ -1,10 +1,7 @@
-import { LikeAndView } from "@/components/shared/LikeAndView";
 import Line from "@/components/shared/Line";
-import { PaginationCustom } from "@/components/shared/PaginationCustom";
-import { GetActors } from "@/lib/services_api";
+import ListActorOrDirector from "@/components/shared/ListActorOrDirector";
 import { searchParamsProps } from "@/types/Param";
-import Image from "next/image";
-import Link from "next/link";
+import { Suspense } from "react";
 
 export default async function page({
   searchParams,
@@ -12,9 +9,6 @@ export default async function page({
   searchParams: searchParamsProps;
 }) {
   const currentPage = Number(searchParams.page) || 1;
-  const data = await GetActors({ page: currentPage, pageSize: 6 });
-  const listDirectors = data.data;
-  const totalPage = Math.ceil(data.totalItem / data.pageSize);
   return (
     <>
       <Line className="mt-2 mb-4" />
@@ -23,27 +17,9 @@ export default async function page({
           Diễn viên
         </h2>
         <Line className="border-blue-500 border-t-4 my-4" />
-        <div className="space-y-4 mb-4">
-          {listDirectors.map((d) => (
-            <div key={d.id} className="flex gap-4">
-              <Image
-                width={400}
-                height={400}
-                alt={d.name}
-                src="/images/placeholder.jpeg"
-                className="min-w-[80px] max-w-[300px] rounded-lg shadow-sm"
-              />
-              <div className="space-y-2">
-                <Link href={`/actors/${d.id}`} className="font-semibold">
-                  {d.name}
-                </Link>
-                <LikeAndView />
-                <p className="text-gray-400 text-sm">Đang cập nhật</p>
-              </div>
-            </div>
-          ))}
-        </div>
-        <PaginationCustom curPage={currentPage} totalPage={totalPage} />
+        <Suspense key={currentPage} fallback={<p>Đang tải...</p>}>
+          <ListActorOrDirector currentPage={currentPage} type="actors" />
+        </Suspense>
       </section>
     </>
   );

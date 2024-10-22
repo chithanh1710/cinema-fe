@@ -3,7 +3,7 @@ import React from "react";
 
 export default function loading() {
   return (
-    <div className="w-full h-screen relative bg-[#FF99CC]">
+    <div className="w-full h-screen fixed top-0 left-0 z-[99999999] bg-[#FF99CC]">
       <div className="absolute top-[30%] left-1/2 -translate-x-1/2 text-white flex flex-col justify-center items-center">
         <Image
           alt="Loading gif"

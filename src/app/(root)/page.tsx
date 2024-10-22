@@ -11,8 +11,9 @@ import { CinemaInfo } from "@/components/shared/CinemaInfo";
 import { QuickBuy } from "@/components/shared/QuickBuy";
 import { TitleH2 } from "@/components/shared/TitleH2";
 import Line from "@/components/shared/Line";
+import SkeletonListCardMovie from "@/components/Skeleton/SkeletonListCardMovie";
 
-export default function Home({
+export default function page({
   searchParams,
 }: {
   searchParams: searchParamsProps;
@@ -31,7 +32,10 @@ export default function Home({
             title={filterMovie.title}
           />
         </Suspense>
-        <Suspense key={`${searchParams[filterMovie.nameQuery]}`}>
+        <Suspense
+          fallback={<SkeletonListCardMovie />}
+          key={`${searchParams[filterMovie.nameQuery]}`}
+        >
           <ListCardMovie
             nameQuery={filterMovie.nameQuery}
             searchParams={searchParams}
@@ -49,15 +53,13 @@ export default function Home({
             title={filterBlogs.title}
           />
         </Suspense>
-        <Suspense key={`${searchParams[filterBlogs.nameQuery]}`}>
-          <ListBlog
-            nameQuery={filterBlogs.nameQuery}
-            searchParams={searchParams}
-          />
-        </Suspense>
+        <ListBlog
+          nameQuery={filterBlogs.nameQuery}
+          searchParams={searchParams}
+        />
       </section>
       <Line />
-      <section className="container_custom">
+      <section id="deal" className="container_custom">
         <TitleH2 text="Tin khuyến mãi" />
         <SliderSub />
       </section>
