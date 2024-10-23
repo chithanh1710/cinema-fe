@@ -1,7 +1,13 @@
 import Line from "@/components/shared/Line";
-import { GetAllMovie, GetGenresById } from "@/lib/services_api";
+import { GetAllMovie, GetGenres, GetGenresById } from "@/lib/services_api";
 import { paramsProps } from "@/types/Param";
 import Image from "next/image";
+
+export async function generateStaticParams() {
+  const posts = await GetGenres({ page: 1, pageSize: 10 });
+
+  return posts.data.map((post) => ({ id: post.id.toString() }));
+}
 
 export default async function page({ params }: { params: paramsProps }) {
   const { id } = params;

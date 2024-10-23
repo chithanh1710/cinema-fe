@@ -34,7 +34,7 @@ export const SeatMap = ({
 
     const intervalId = setInterval(() => {
       fetchSeats();
-    }, 2000);
+    }, 1000);
 
     return () => clearInterval(intervalId);
   }, [showTimeId]);

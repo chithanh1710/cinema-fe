@@ -10,9 +10,6 @@ import {
 import { createQueryString } from "@/utils/utils";
 import { useEffect, useState } from "react";
 import { GetMovieShowtimes } from "@/lib/services_api";
-import { id } from "date-fns/locale";
-import router from "next/router";
-
 interface CinemaData {
   city_name: string;
   cinema_name: string;
@@ -29,7 +26,7 @@ export function FilterSelectTheater({ id }: { id: string }) {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const router = useRouter();
-  const cityName = searchParams.get("cityName") || "";
+  const cityName = searchParams.get("cityName") || "Toàn quốc";
   const cinemaName = searchParams.get("cinemaName") || "";
 
   useEffect(() => {

@@ -21,7 +21,6 @@ const holdSeats = async (
   CustomerId: number
 ) => {
   try {
-    await new Promise((res) => setTimeout(() => res(""), 5000));
     const res = await fetch(`${URL_API}HoldSeat`, {
       method: "POST",
       headers: {
@@ -49,7 +48,6 @@ const unholdSeats = async (
   CustomerId: number
 ) => {
   try {
-    await new Promise((res) => setTimeout(() => res(""), 5000));
     const res = await fetch(`${URL_API}UnHoldSeat`, {
       method: "POST",
       headers: {
@@ -77,7 +75,6 @@ export async function seatAction(
   seats: Seat[],
   formData: FormData
 ) {
-  await new Promise((res) => setTimeout(() => res(""), 5000));
   try {
     const ShowtimeId = showTimeId;
     const SeatId = Number(formData.get("seatId"));
@@ -111,7 +108,6 @@ export const bookSeatsAction = async (
   formData: FormData
 ) => {
   try {
-    await new Promise((res) => setTimeout(() => res(""), 5000));
     const res = await fetch(`${URL_API}/BookSeats`, {
       method: "POST",
       headers: {

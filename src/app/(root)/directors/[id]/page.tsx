@@ -1,9 +1,15 @@
 import { LikeAndView } from "@/components/shared/LikeAndView";
 import Line from "@/components/shared/Line";
-import { GetAllMovie, GetDirectorById } from "@/lib/services_api";
+import { GetActors, GetAllMovie, GetDirectorById } from "@/lib/services_api";
 import { paramsProps } from "@/types/Param";
 import Image from "next/image";
 import Link from "next/link";
+
+export async function generateStaticParams() {
+  const posts = await GetActors({ page: 1, pageSize: 6 });
+
+  return posts.data.map((post) => ({ id: post.id.toString() }));
+}
 
 export default async function page({ params }: { params: paramsProps }) {
   const { id } = params;

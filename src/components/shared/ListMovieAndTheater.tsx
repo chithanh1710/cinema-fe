@@ -35,7 +35,6 @@ export async function ListMovieAndTheater({
       : searchParams.cinemaName?.toString();
 
   const data = await GetMovieShowtimes(Number(id), cinemaName, cityName);
-
   return (
     <section className="space-y-2">
       {data.data.map((item) => {

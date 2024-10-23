@@ -5,6 +5,7 @@ import { useState } from "react";
 import { getYouTubeEmbedLink } from "@/utils/utils";
 import { cn } from "@/lib/utils";
 import { MovieDetails } from "@/types/RootMovies";
+
 export function HeroPageId({
   className,
   detail,

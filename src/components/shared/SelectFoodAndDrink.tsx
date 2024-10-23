@@ -104,10 +104,6 @@ export function ButtonSummitFoodAndDrink({
         throw new Error("Có lỗi xảy ra khi thêm thực phẩm và đồ uống.");
       }
 
-      const result = await response.json();
-
-      console.log(result);
-
       router.replace(`/booking/step4?idShowTime=${showTimeId}`);
     } catch (error) {
       console.error("Lỗi:", error);
