@@ -24,18 +24,21 @@ export default async function page({
   const { id } = params;
   const data = await GetMovieById(Number(id));
   const movieDetails = data.data[0];
+  console.log(movieDetails);
   return (
     <>
       <section className="grid grid-cols-9">
         <HeroPageId detail={movieDetails} className="col-span-9" />
         <div className="col-span-6 container_custom max-xl:col-span-9 w-full">
           <MoreInfoMovie id={id} detail={movieDetails} />
-          <Suspense
-            key={`ListMovieAndTheater${searchParams.cityName}_${searchParams.cinemaName}_${searchParams.date}_${id}`}
-            fallback={<SkeletonListMovieAndTheater />}
-          >
-            <ListMovieAndTheater searchParams={searchParams} id={id} />
-          </Suspense>
+          {movieDetails.type === "ĐANG CHIẾU" && (
+            <Suspense
+              key={`ListMovieAndTheater${searchParams.cityName}_${searchParams.cinemaName}_${searchParams.date}_${id}`}
+              fallback={<SkeletonListMovieAndTheater />}
+            >
+              <ListMovieAndTheater searchParams={searchParams} id={id} />
+            </Suspense>
+          )}
         </div>
         <Suspense
           key={`ListCardMovieASide${searchParams.cityName}_${searchParams.cinemaName}_${searchParams.date}_${id}`}

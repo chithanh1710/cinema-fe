@@ -12,6 +12,11 @@ const nextConfig = {
         hostname: "www.galaxycine.vn",
         pathname: "/media/**",
       },
+      {
+        protocol: "https",
+        hostname: "imgcinema.blob.core.windows.net",
+        pathname: "/img/**",
+      },
     ],
   },
 };
