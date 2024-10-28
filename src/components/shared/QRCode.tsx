@@ -130,7 +130,7 @@ export function QRCodeComponent({
                   success: "Thanh toán thành công",
                 }
               );
-              revalidatePath("account/history","page");
+              revalidatePath("/account/history","page");
               router.replace("/account/history");
             } else {
               toast.error("Mã OTP không đúng");
