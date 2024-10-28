@@ -12,11 +12,11 @@ export default function Menu() {
   const [index, setIndex] = useState(0);
   const movieList = [
     {
-      href: "movie-showing",
+      href: "/movie-showing",
       title: "Phim đang chiếu",
     },
     {
-      href: "movie-upcoming",
+      href: "/movie-upcoming",
       title: "Phim sắp chiếu",
     },
   ];
