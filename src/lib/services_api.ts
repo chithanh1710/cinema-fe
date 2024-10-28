@@ -26,7 +26,7 @@ export async function GetActors({
 	pageSize: number;
 }): Promise<RootActors> {
 	try {
-		await new Promise((res) => setTimeout(() => res(""), 600));
+
 		const res = await fetch(
 			`${URL_API}actors?page=${page}&pageSize=${pageSize}`, {
 				method: "GET", // Hoặc POST tùy vào API của bạn
@@ -54,7 +54,7 @@ export async function GetActorsById({
 	id: number;
 }): Promise<DaumActors> {
 	try {
-		await new Promise((res) => setTimeout(() => res(""), 600));
+
 		const res = await fetch(`${URL_API}actors/${id}`,
 			{
 				method: "GET", // Hoặc POST tùy vào API của bạn
@@ -84,7 +84,7 @@ export async function GetGenres({
 	pageSize: number;
 }): Promise<RootGenres> {
 	try {
-		await new Promise((res) => setTimeout(() => res(""), 600));
+
 		const res = await fetch(
 			`${URL_API}genres?page=${page}&pageSize=${pageSize}`,
 			{
@@ -113,7 +113,7 @@ export async function GetGenresById({
 	id: number;
 }): Promise<DaumGenres> {
 	try {
-		await new Promise((res) => setTimeout(() => res(""), 600));
+
 		const res = await fetch(`${URL_API}genres/${id}`,
 			{
 				method: "GET", // Hoặc POST tùy vào API của bạn
@@ -143,7 +143,7 @@ export async function GetDirectors({
 	pageSize: number;
 }): Promise<RootDirectors> {
 	try {
-		await new Promise((res) => setTimeout(() => res(""), 600));
+
 		const res = await fetch(
 			`${URL_API}directors?page=${page}&pageSize=${pageSize}`,
 			{
@@ -172,7 +172,7 @@ export async function GetDirectorById({
 	id: number;
 }): Promise<DaumDirectors> {
 	try {
-		await new Promise((res) => setTimeout(() => res(""), 600));
+
 		const res = await fetch(`${URL_API}directors/${id}`,
 			{
 				method: "GET", // Hoặc POST tùy vào API của bạn
@@ -241,7 +241,7 @@ export async function GetAllMovie({
 
 export async function GetMoviesByType(): Promise<Movie[]> {
 	try {
-		await new Promise((res) => setTimeout(() => res(""), 600));
+
 		const res = await fetch(`${URL_API}GetMoviesByType`, {
 			next: { revalidate: 200 }, headers: { "ngrok-skip-browser-warning": "true" }
 		});
@@ -282,7 +282,7 @@ export async function GetMovieShowtimes(
 	cityName?: string
 ): Promise<RootMovieShowtimes> {
 	try {
-		await new Promise((res) => setTimeout(() => res(""), 600));
+
 		const cinemaQuery = cinemaName ? `&cinemaName=${cinemaName}` : "";
 		const cityQuery = cityName ? `&cityName=${cityName}` : "";
 		const res = await fetch(
@@ -377,7 +377,7 @@ export async function CreateCustomer(
 /************************* FOOD AND DRINKS *************************/
 export async function GetFoodAndDrink(): Promise<RootFoodDrink> {
 	try {
-		await new Promise((res) => setTimeout(() => res(""), 600));
+
 		const res = await fetch(`${URL_API}FoodsDrinks`, {
 			next: { revalidate: 200 },
 			headers: { "ngrok-skip-browser-warning": "true" },
@@ -400,7 +400,7 @@ export async function GetTransactionsByUserId(
 	userId: number
 ): Promise<RootTransactions> {
 	try {
-		await new Promise((res) => setTimeout(() => res(""), 600));
+
 		const res = await fetch(`${URL_API}transactions/${userId}`, {
 			next: { revalidate: 200 },
 			headers: { "ngrok-skip-browser-warning": "true" },
@@ -447,7 +447,7 @@ export async function GetSeatsByShowtime(
 /************************* FUNCTION *************************/
 export async function GetAvailableMovies(): Promise<RootGetAvailableMovies> {
 	try {
-		await new Promise((res) => setTimeout(() => res(""), 600));
+
 		const res = await fetch(`${URL_API}GetAvailableMovies`, {
 			next: { revalidate: 200 },
 			headers: { "ngrok-skip-browser-warning": "true" },
@@ -469,7 +469,7 @@ export async function GetCinemasByMovie(
 	movieId: number
 ): Promise<RootGetCinemasByMovie> {
 	try {
-		await new Promise((res) => setTimeout(() => res(""), 600));
+
 		const res = await fetch(`${URL_API}GetCinemasByMovie?movieId=${movieId}`, {
 			next: { revalidate: 200 },
 			headers: { "ngrok-skip-browser-warning": "true" },
@@ -492,7 +492,7 @@ export async function GetAvailableDates(
 	cinemaId: number
 ): Promise<RootGetAvailableDates> {
 	try {
-		await new Promise((res) => setTimeout(() => res(""), 600));
+
 		const res = await fetch(
 			`${URL_API}GetAvailableDates?movieId=${movieId}&cinemaId=${cinemaId}`,
 			{
@@ -519,7 +519,7 @@ export async function GetAvailableShowtimes(
 	date: string
 ): Promise<RootGetAvailableShowtimes> {
 	try {
-		await new Promise((res) => setTimeout(() => res(""), 600));
+
 		const res = await fetch(
 			`${URL_API}GetAvailableShowtimes?movieId=${movieId}&cinemaId=${cinemaId}&showDate=${date}`,
 			{
@@ -544,7 +544,7 @@ export async function GetTransactionDetailsByCustomerId(
 	customerId: number
 ): Promise<RootGetTransactionDetailsByCustomerId> {
 	try {
-		await new Promise((res) => setTimeout(() => res(""), 600));
+
 		const res = await fetch(
 			`${URL_API}GetTransactionDetailsByCustomerId?customerId=${customerId}`,
 			{
