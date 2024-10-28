@@ -25,6 +25,7 @@ const holdSeats = async (
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "ngrok-skip-browser-warning": "true"
       },
       body: JSON.stringify({
         ShowtimeId,
@@ -52,6 +53,7 @@ const unholdSeats = async (
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "ngrok-skip-browser-warning": "true"
       },
       body: JSON.stringify({
         ShowtimeId,
@@ -112,6 +114,7 @@ export const bookSeatsAction = async (
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "ngrok-skip-browser-warning": "true"
       },
       body: JSON.stringify({
         ShowtimeId,
