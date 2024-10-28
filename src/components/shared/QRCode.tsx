@@ -11,6 +11,7 @@ import { useMemo, useState } from "react";
 import { Button } from "../ui/button";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import { revalidatePath } from "next/cache";
 
 export function QRCodeComponent({
   customerId,
@@ -129,6 +130,7 @@ export function QRCodeComponent({
                   success: "Thanh toán thành công",
                 }
               );
+              revalidatePath("account/history","page");
               router.replace("/account/history");
             } else {
               toast.error("Mã OTP không đúng");
