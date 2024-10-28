@@ -400,9 +400,7 @@ export async function GetTransactionsByUserId(
 	userId: number
 ): Promise<RootTransactions> {
 	try {
-
 		const res = await fetch(`${URL_API}transactions/${userId}`, {
-			next: { revalidate: 200 },
 			headers: { "ngrok-skip-browser-warning": "true" },
 		});
 		if (!res.ok) {
