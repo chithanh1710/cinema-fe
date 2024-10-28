@@ -224,7 +224,7 @@ export async function GetAllMovie({
 		const res = await fetch(
 			`${URL_API}movies?page=${page}&pageSize=${pageSize}${filterBySearch}${filterByType}${filterByCinemaName}${filterByDirector}${filterByActor}${filterByGenre}`,
 
-			{ next: { revalidate: 200 }, headers: { "ngrok-skip-browser-warning": "true" } }
+			{ headers: { "ngrok-skip-browser-warning": "true" } }
 		);
 		if (!res.ok) {
 			throw new Error(`HTTP error! status: ${res.status}`);
@@ -243,7 +243,7 @@ export async function GetMoviesByType(): Promise<Movie[]> {
 	try {
 
 		const res = await fetch(`${URL_API}GetMoviesByType`, {
-			next: { revalidate: 200 }, headers: { "ngrok-skip-browser-warning": "true" }
+			headers: { "ngrok-skip-browser-warning": "true" }
 		});
 		if (!res.ok) {
 			throw new Error(`HTTP error! status: ${res.status}`);
@@ -261,7 +261,7 @@ export async function GetMoviesByType(): Promise<Movie[]> {
 export async function GetMovieById(id: number): Promise<RootMovieDetails> {
 	try {
 		const res = await fetch(`${URL_API}movies/${id}`, {
-			next: { revalidate: 200 }, headers: { "ngrok-skip-browser-warning": "true" }
+			headers: { "ngrok-skip-browser-warning": "true" }
 		});
 		if (!res.ok) {
 			throw new Error(`HTTP error! status: ${res.status}`);
@@ -288,7 +288,6 @@ export async function GetMovieShowtimes(
 		const res = await fetch(
 			`${URL_API}GetMovieShowtimes?movieId=${movieId}${cinemaQuery}${cityQuery}`,
 			{
-				next: { revalidate: 200 },
 				headers: { "ngrok-skip-browser-warning": "true" }
 			}
 		);
@@ -310,7 +309,6 @@ export async function GetAllCinema(q: string = ""): Promise<RootCinema> {
 	try {
 		const search = q ? "&q=" + q : "";
 		const res = await fetch(`${URL_API}cinemas?${search}`, {
-			next: { revalidate: 200 },
 			headers: { "ngrok-skip-browser-warning": "true" }
 		});
 		if (!res.ok) {
@@ -330,7 +328,6 @@ export async function GetAllCinema(q: string = ""): Promise<RootCinema> {
 export async function GetCustomer(email: string): Promise<Customer | null> {
 	try {
 		const res = await fetch(`${URL_API}customers?email=${email}`, {
-			next: { revalidate: 200 },
 			headers: { "ngrok-skip-browser-warning": "true" },
 		});
 
@@ -379,7 +376,6 @@ export async function GetFoodAndDrink(): Promise<RootFoodDrink> {
 	try {
 
 		const res = await fetch(`${URL_API}FoodsDrinks`, {
-			next: { revalidate: 200 },
 			headers: { "ngrok-skip-browser-warning": "true" },
 		});
 		if (!res.ok) {
@@ -447,7 +443,6 @@ export async function GetAvailableMovies(): Promise<RootGetAvailableMovies> {
 	try {
 
 		const res = await fetch(`${URL_API}GetAvailableMovies`, {
-			next: { revalidate: 200 },
 			headers: { "ngrok-skip-browser-warning": "true" },
 		});
 		if (!res.ok) {
@@ -469,7 +464,6 @@ export async function GetCinemasByMovie(
 	try {
 
 		const res = await fetch(`${URL_API}GetCinemasByMovie?movieId=${movieId}`, {
-			next: { revalidate: 200 },
 			headers: { "ngrok-skip-browser-warning": "true" },
 		});
 		if (!res.ok) {
@@ -494,7 +488,6 @@ export async function GetAvailableDates(
 		const res = await fetch(
 			`${URL_API}GetAvailableDates?movieId=${movieId}&cinemaId=${cinemaId}`,
 			{
-				next: { revalidate: 200 },
 				headers: { "ngrok-skip-browser-warning": "true" },
 			}
 		);
@@ -521,7 +514,6 @@ export async function GetAvailableShowtimes(
 		const res = await fetch(
 			`${URL_API}GetAvailableShowtimes?movieId=${movieId}&cinemaId=${cinemaId}&showDate=${date}`,
 			{
-				next: { revalidate: 200 },
 				headers: { "ngrok-skip-browser-warning": "true" },
 			}
 		);
@@ -546,7 +538,6 @@ export async function GetTransactionDetailsByCustomerId(
 		const res = await fetch(
 			`${URL_API}GetTransactionDetailsByCustomerId?customerId=${customerId}`,
 			{
-				next: { revalidate: 200 },
 				headers: { "ngrok-skip-browser-warning": "true" },
 			}
 		);
