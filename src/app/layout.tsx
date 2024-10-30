@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "../styles/globals.css";
 import { MenuProvider } from "@/contexts/ContextMenu";
@@ -19,19 +19,25 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-		<Script
-			src="https://www.googletagmanager.com/gtag/js?id=G-MC2D7TTZEJ"
-			strategy="afterInteractive"
-		/>
-		<Script id="google-analytics" strategy="afterInteractive">
-			{`
+		<head>
+			<Script
+				src="https://www.googletagmanager.com/gtag/js?id=G-MC2D7TTZEJ"
+				strategy="afterInteractive"
+			/>
+			<Script id="google-analytics" strategy="afterInteractive">
+				{`
           window.dataLayer = window.dataLayer || [];
           function gtag(){window.dataLayer.push(arguments);}
           gtag('js', new Date());
 
           gtag('config', 'G-MC2D7TTZEJ');
         `}
-		</Script>
+			</Script>
+			<Script type="text/javascript" data-cmp-ab="1"
+			        src="https://cdn.consentmanager.net/delivery/autoblocking/a93c736e61286.js"
+			        data-cmp-host="a.delivery.consentmanager.net" data-cmp-cdn="cdn.consentmanager.net"
+			        data-cmp-codesrc="16"></Script>
+		</head>
 		<body className={`${inter.className} relative overflow-x-hidden`}>
 		<MenuProvider>{children}</MenuProvider>
 		<Toaster/>
