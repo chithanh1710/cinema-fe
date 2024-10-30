@@ -10,6 +10,8 @@ import { redirect } from "next/navigation";
 import { QRCodeSVG } from "qrcode.react";
 import React from "react";
 
+export const revalidate = 0;
+
 export default async function page({ params }: { params: paramsProps }) {
   const { id } = params;
   const session = await auth();

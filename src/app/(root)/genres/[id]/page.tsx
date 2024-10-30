@@ -3,6 +3,8 @@ import { GetAllMovie, GetGenres, GetGenresById } from "@/lib/services_api";
 import { paramsProps } from "@/types/Param";
 import Image from "next/image";
 
+export const revalidate = 0;
+
 export async function generateStaticParams() {
   const posts = await GetGenres({ page: 1, pageSize: 10 });
 

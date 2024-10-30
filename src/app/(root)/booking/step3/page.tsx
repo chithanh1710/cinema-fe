@@ -16,6 +16,8 @@ import Image from "next/image";
 import { redirect } from "next/navigation";
 import React from "react";
 
+export const revalidate = 0;
+
 export default async function page({
   searchParams,
 }: {

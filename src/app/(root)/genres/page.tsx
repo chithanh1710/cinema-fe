@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button";
 import { GetGenres } from "@/lib/services_api";
 import Link from "next/link";
 
+export const revalidate = 0;
+
 export default async function page() {
   const data = await GetGenres({ page: 1, pageSize: 100 });
   const { totalItem, data: listGenres } = data;

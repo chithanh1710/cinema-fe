@@ -8,6 +8,8 @@ import { formatMoney } from "@/utils/utils";
 import { redirect } from "next/navigation";
 import React, { Suspense } from "react";
 
+export const revalidate = 0;
+
 export default async function page({
   searchParams,
 }: {

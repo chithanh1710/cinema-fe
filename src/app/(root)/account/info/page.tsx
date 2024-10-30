@@ -2,6 +2,8 @@ import { auth } from "@/lib/auth";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
+export const revalidate = 0;
+
 export default async function page() {
   const session = await auth();
   if (!session?.user?.id) redirect("/login");

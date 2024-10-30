@@ -5,6 +5,8 @@ import ListActorOrDirector from "@/components/shared/ListActorOrDirector";
 import { searchParamsProps } from "@/types/Param";
 import { Suspense } from "react";
 
+export const revalidate = 0;
+
 export default async function page({
   searchParams,
 }: {

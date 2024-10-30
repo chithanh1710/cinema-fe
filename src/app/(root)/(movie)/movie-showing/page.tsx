@@ -5,6 +5,8 @@ import { GetAllMovie } from "@/lib/services_api";
 import styles from "@/styles/seoContentPageMovie.module.css";
 import { searchParamsProps } from "@/types/Param";
 
+export const revalidate = 0;
+
 export default async function page({
   searchParams,
 }: {

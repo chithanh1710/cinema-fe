@@ -13,6 +13,8 @@ import { TitleH2 } from "@/components/shared/TitleH2";
 import Line from "@/components/shared/Line";
 import SkeletonListCardMovie from "@/components/Skeleton/SkeletonListCardMovie";
 
+export const revalidate = 0;
+
 export default function page({
   searchParams,
 }: {

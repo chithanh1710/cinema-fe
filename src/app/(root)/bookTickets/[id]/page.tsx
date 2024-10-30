@@ -8,6 +8,8 @@ import { GetAllMovie, GetMovieById } from "@/lib/services_api";
 import SkeletonListMovieAndTheater from "@/components/Skeleton/SkeletonListMovieAndTheater";
 import SkeletonListCardMovieASide from "@/components/Skeleton/SkeletonListCardMovieASide";
 
+export const revalidate = 0;
+
 export async function generateStaticParams() {
   const posts = await GetAllMovie({ page: 1, pageSize: 10 });
 

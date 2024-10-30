@@ -1,12 +1,13 @@
 import { AccordionList } from "@/components/Accordion/AccordionList";
 import { ButtonLink } from "@/components/Button/ButtonLink";
-import { Button } from "@/components/ui/button";
 import { GetAllCinema, GetAllMovie } from "@/lib/services_api";
 import { searchParamsProps } from "@/types/Param";
 import { format } from "date-fns";
 import { vi } from "date-fns/locale";
 import Image from "next/image";
 import { Suspense } from "react";
+
+export const revalidate = 0;
 
 export default async function Page({
   searchParams,

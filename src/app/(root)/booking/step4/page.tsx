@@ -10,6 +10,8 @@ import { searchParamsProps } from "@/types/Param";
 import { formatMoney } from "@/utils/utils";
 import { redirect } from "next/navigation";
 
+export const revalidate = 0;
+
 import {
   Table,
   TableBody,
