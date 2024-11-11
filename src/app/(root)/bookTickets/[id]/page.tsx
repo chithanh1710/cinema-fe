@@ -26,7 +26,6 @@ export default async function page({
   const { id } = params;
   const data = await GetMovieById(Number(id));
   const movieDetails = data.data[0];
-  console.log(movieDetails);
   return (
     <>
       <section className="grid grid-cols-9">
